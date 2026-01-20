@@ -1,0 +1,80 @@
+@use '../foundations/variables'as *;
+@use '../foundations/mixins'as *;
+
+.l-footer {
+    background: url(../../assets/images/common/bg-noise.png) repeat center / 10% 10% $color-black;
+
+    .l-inner {
+        @include padding-top-vw(30, 30);
+        @include padding-bottom-vw(20, 20);
+
+        @include sp-only {
+            @include padding-left-vw(0, 20);
+            @include padding-right-vw(0, 20);
+        }
+    }
+
+    &__logo {
+        display: block;
+        @include width-vw(95, 95);
+        @include margin-bottom-vw(25, 20);
+
+        @include sp-only {}
+    }
+
+    &__nav {
+
+        &.--primary {
+            @include margin-bottom-vw(10, 0);
+
+            @include sp-only {}
+        }
+
+        &.--secondary {
+            @include margin-bottom-vw(20, 0);
+
+            @include sp-only {}
+        }
+    }
+
+    &__list {
+        display: flex;
+        justify-content: center;
+
+        @include sp-only {
+            flex-wrap: wrap;
+        }
+
+        &.--sub {}
+    }
+
+    &__item {
+        color: $color-white;
+        font-weight: $font-weight-regular;
+        @include font-vw(14, 12);
+
+        @include sp-only {
+            @include margin-left-vw(0, 10);
+            @include margin-right-vw(0, 10);
+            @include margin-bottom-vw(0, 10);
+        }
+
+        +.l-footer__item {
+            @include margin-left-vw(40, 0);
+
+            @include sp-only {}
+        }
+
+        a {
+
+        }
+    }
+
+    &__copy {
+        color: $color-white;
+        font-weight: $font-weight-regular;
+        @include font-vw(10, 10);
+
+        @include sp-only {}
+    }
+}

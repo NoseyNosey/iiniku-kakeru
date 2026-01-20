@@ -1,0 +1,15 @@
+@use '../../foundations/variables'as *;
+@use '../../foundations/mixins'as *;
+
+.u-white-bg {
+    pointer-events: none;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    width: 100%;
+    height: 100dvh;
+    z-index: 100;
+    position: fixed;
+    background-color: $color-white;
+}

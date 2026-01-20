@@ -1,0 +1,62 @@
+@use '../../foundations/variables'as *;
+@use '../../foundations/mixins'as *;
+
+.u-sp-only {
+  display: none;
+  @include sp-only {
+    display: block;
+  }
+}
+.u-sp-only-ib {
+  display: none;
+  @include sp-only {
+    display: inline-block;
+  }
+}
+.u-pc-only {
+  display: none;
+  @include pc-only {
+    display: block;
+  }
+}
+.u-pc-only-ib {
+  display: none;
+  @include pc-only {
+    display: inline-block;
+  }
+}
+
+.u-flex-justify-center {
+  display: flex;
+  justify-content: center;
+}
+
+.u-flex-justify-right {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.u-flex-align-center {
+  display: flex;
+  align-items: center;
+}
+
+.u-flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.u-bold {
+  font-weight: $font-weight-bold;
+}
+
+.u-text-center {
+  text-align: center;
+}
+
+.u-pc-pl-0 {
+  @include pc-only {
+      padding-left: 0;
+  }
+}

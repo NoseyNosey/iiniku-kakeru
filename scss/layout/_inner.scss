@@ -1,0 +1,29 @@
+@use '../foundations/variables'as *;
+@use '../foundations/mixins'as *;
+
+.l-inner {
+  margin: auto;
+  position: relative;
+
+  &.--sm {
+    @include pc-only {
+      @include width-vw(800);
+    }
+    @include sp-only {
+    }
+  }
+
+  &.--md {
+    @include pc-only {
+      @include width-vw(1000);
+    }
+    @include sp-only {}
+  }
+
+  &.--lg {
+    @include pc-only {
+      @include width-vw(1200);
+    }
+    @include sp-only {}
+  }
+}

@@ -1,0 +1,292 @@
+@use '../foundations/variables'as *;
+@use '../foundations/mixins'as *;
+
+.l-header {
+	position: fixed;
+	z-index: 2;
+	width: 100%;
+
+	@include sp-only {}
+
+	&__inner {
+		background: url(../../assets/images/common/header-bg.png) no-repeat center / cover;
+		@include height-vw(120, 60);
+		@include padding-top-vw(27, 18);
+
+		@include sp-only {}
+	}
+
+	&__logo {
+		display: inline-block;
+		z-index: 2;
+		@include width-vw(134, 100);
+		@include margin-bottom-vw(10, 15);
+
+		@include sp-only {}
+	}
+
+	&__nav {
+		width: 100%;
+
+		@include sp-only {
+			display: none;
+		}
+	}
+
+	&__nav-list {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+
+		@include sp-only {}
+	}
+
+	&__nav-item {
+		+.l-header__nav-item {
+			@include margin-left-vw(30, 20);
+
+			@include sp-only {}
+		}
+
+		@include sp-only {}
+	}
+
+	&__nav-link {
+		@include font-vw(14, 14);
+
+		@include sp-only {}
+	}
+
+	&__menu-toggle {
+		position: fixed;
+		z-index: 2;
+		@include height-vw(12, 12);
+		@include width-vw(45, 30);
+		@include top-vw(42);
+		@include right-vw(30, 15);
+
+		@include sp-only {
+			position: absolute;
+			top: 0;
+			bottom: 0;
+			margin: auto;
+		}
+
+		&.is-open {
+			.l-header__menu-bar {
+
+
+				&:nth-child(1) {
+					transform: rotate(30deg);
+					@include top-vw(5, 5);
+				}
+
+				&:nth-child(2) {
+					opacity: 0;
+				}
+
+				&:nth-child(3) {
+					transform: rotate(-30deg);
+					@include bottom-vw(6, 5);
+				}
+			}
+		}
+	}
+
+	&__menu-bar {
+		background-color: $color-black;
+		position: absolute;
+		width: 100%;
+		transition: $transition;
+		@include height-vw(1, 1);
+
+		@include sp-only {}
+
+
+		&:nth-child(1) {
+			top: 0;
+		}
+
+		&:nth-child(2) {
+			margin: auto;
+		}
+
+		&:nth-child(3) {
+			bottom: 0;
+		}
+	}
+
+	&__drawer {
+		opacity: 0;
+		pointer-events: none;
+		background: url(../../assets/images/common/header-open-bg.png) no-repeat center / cover;
+		z-index: 1;
+		position: fixed;
+		top: 0;
+		right: 0;
+		left: 0;
+		display: flex;
+		transition: $transition;
+		@include height-vw(755);
+
+		@include sp-only {
+			height: 100vh;
+		}
+
+		&.is-open {
+			opacity: 1;
+			pointer-events: all;
+		}
+	}
+
+	&__drawer-media {
+		width: 42%;
+
+		@include sp-only {
+			display: none;
+		}
+	}
+
+	&__drawer-body {
+		width: 58%;
+
+		@include sp-only {
+			width: 100%;
+			height: 100dvh;
+			overflow-y: auto;
+			-webkit-overflow-scrolling: touch;
+			overscroll-behavior: contain;
+		}
+	}
+
+	&__drawer-nav {
+		display: flex;
+		position: relative;
+		@include padding-vw(100, 60, 60, 60, 70, 20, 20, 20);
+
+		@include sp-only {}
+	}
+
+	&__drawer-list {
+		@include sp-only {
+			width: 100%;
+			display: flex;
+			flex-wrap: wrap;
+		}
+	}
+
+	&__drawer-item {
+			@include margin-bottom-vw(10, 10);
+
+		@include sp-only {
+			width: 50%;
+		}
+
+		a {
+			@include gradient-text;
+		}
+
+		&.--about {
+			position: absolute;
+			@include top-vw(95, 20);
+			@include right-vw(200, 20);
+
+			@include sp-only {
+				width: 100%;
+				position: static;
+			}
+		}
+	}
+
+	&__drawer-link {
+		font-weight: $font-weight-regular;
+		transition: ease-in-out 0.3s;
+		@include font-vw(46, 30);
+
+		@include pc-only {
+			&:hover {
+				// opacity: 1;
+			}
+		}
+
+		@include sp-only {
+			display: block;
+			line-height: 1.2;
+			@include margin-bottom-vw(0, 10);
+		}
+
+		&.--no-link {
+			@include pc-only {
+				@include margin-bottom-vw(10, 0);
+			}
+		}
+	}
+
+	&__drawer-children {
+		@include sp-only {
+			display: flex;
+			flex-wrap: wrap;
+		}
+	}
+
+	&__drawer-child {
+		@include gradient-text;
+		@include font-vw(30, 20);
+
+		@include sp-only {
+			width: 50%;
+		}
+
+		+.l-header__drawer-child {
+			@include margin-top-vw(10, 0);
+
+			@include sp-only {
+				@include margin-bottom-vw(0, 10);
+			}
+		}
+
+		a {
+			@include pc-only {
+				&:hover {
+					// opacity: 1;
+				}
+			}
+		}
+	}
+
+	&__drawer-copyright {
+		position: absolute;
+		font-weight: $font-weight-regular;
+		@include gradient-text;
+		@include font-vw(14, 12);
+		@include bottom-vw(20, 15);
+		@include right-vw(30, 15);
+
+		@include sp-only {
+
+		}
+	}
+}
+
+.l-header-overlay {
+	opacity: 0;
+	pointer-events: none;
+	transition: $transition;
+	background: rgba(0, 0, 0, .25);
+	backdrop-filter: none;
+	-webkit-backdrop-filter: none;
+	position: fixed;
+	inset: 0;
+	z-index: 1;
+
+	@include sp-only {}
+
+	&.is-open {
+		opacity: 1;
+		z-index: 1;
+		backdrop-filter: blur(6px);
+		-webkit-backdrop-filter: blur(6px);
+
+		@include sp-only {}
+	}
+}

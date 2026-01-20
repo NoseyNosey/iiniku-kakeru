@@ -1,0 +1,394 @@
+@use "sass:math";
+@use "sass:map";
+@use "../foundations/variables"as *;
+
+/* =====================================================================
+   mixins.scss – 共通ユーティリティ（PC / SP を 1 回で出力）
+   ===================================================================== */
+
+/* ---------------------------------------------------------------------
+   単位変換ヘルパ
+   ------------------------------------------------------------------ */
+@function _to-px($value) {
+  @if math.is-unitless($value) {
+    @return $value * 1px;
+  }
+
+  @return $value;
+}
+
+/* ---------------------------------------------------------------------
+   基本関数 – px → vw 変換
+   ------------------------------------------------------------------ */
+@function px-to-vw($px, $base: $container-width-pc) {
+  @if $px==0 {
+    @return 0;
+  }
+
+  $px: _to-px($px);
+  @return math.div($px, $base) * 100vw;
+}
+
+@function sp-px-to-vw($px, $base: $container-width-sp) {
+  @if $px==0 {
+    @return 0;
+  }
+
+  $px: _to-px($px);
+  @return math.div($px, $base) * 100vw;
+}
+
+/* ---------------------------------------------------------------------
+   メディアクエリ
+   ------------------------------------------------------------------ */
+@mixin sp-only {
+  @media (max-width: map.get($breakpoints, "sp")) {
+    @content;
+  }
+}
+
+@mixin pc-only {
+  @media (min-width: map.get($breakpoints, "pc")) {
+    @content;
+  }
+}
+
+/* ---------------------------------------------------------------------
+   汎用レスポンシブ宣言（プロパティ1本を PC/SP 同時出力）
+   ------------------------------------------------------------------ */
+@mixin vw-resp($prop, $pc-val, $sp-val: null, $imp: false) {
+  $important: if($imp, " !important", "");
+
+  & {
+    #{$prop}: px-to-vw($pc-val) #{$important};
+  }
+
+  @if $sp-val !=null {
+    @include sp-only {
+      #{$prop}: sp-px-to-vw($sp-val) #{$important};
+    }
+  }
+}
+
+/* =====================================================================
+   ショートカット – 幅・高さ
+   ===================================================================== */
+@mixin width-vw($pc, $sp: null, $imp: false) {
+  @include vw-resp(width, $pc, $sp, $imp);
+}
+
+@mixin min-width-vw($pc, $sp: null, $imp: false) {
+  @include vw-resp(min-width, $pc, $sp, $imp);
+}
+
+@mixin max-width-vw($pc, $sp: null, $imp: false) {
+  @include vw-resp(max-width, $pc, $sp, $imp);
+}
+
+@mixin height-vw($pc, $sp: null, $imp: false) {
+  @include vw-resp(height, $pc, $sp, $imp);
+}
+
+@mixin min-height-vw($pc, $sp: null, $imp: false) {
+  @include vw-resp(min-height, $pc, $sp, $imp);
+}
+
+@mixin max-height-vw($pc, $sp: null, $imp: false) {
+  @include vw-resp(max-height, $pc, $sp, $imp);
+}
+
+/* =====================================================================
+   マージン・パディング
+   ===================================================================== */
+@mixin margin-top-vw($pc, $sp: null) {
+  @include vw-resp(margin-top, $pc, $sp);
+}
+
+@mixin margin-right-vw($pc, $sp: null) {
+  @include vw-resp(margin-right, $pc, $sp);
+}
+
+@mixin margin-bottom-vw($pc, $sp: null) {
+  @include vw-resp(margin-bottom, $pc, $sp);
+}
+
+@mixin margin-left-vw($pc, $sp: null) {
+  @include vw-resp(margin-left, $pc, $sp);
+}
+
+@mixin margin-vw($top-pc, $right-pc, $bottom-pc, $left-pc,
+  $top-sp: null, $right-sp: null, $bottom-sp: null, $left-sp: null) {
+  @include margin-top-vw($top-pc, $top-sp);
+  @include margin-right-vw($right-pc, $right-sp);
+  @include margin-bottom-vw($bottom-pc, $bottom-sp);
+  @include margin-left-vw($left-pc, $left-sp);
+}
+
+@mixin padding-top-vw($pc, $sp: null) {
+  @include vw-resp(padding-top, $pc, $sp);
+}
+
+@mixin padding-right-vw($pc, $sp: null) {
+  @include vw-resp(padding-right, $pc, $sp);
+}
+
+@mixin padding-bottom-vw($pc, $sp: null) {
+  @include vw-resp(padding-bottom, $pc, $sp);
+}
+
+@mixin padding-left-vw($pc, $sp: null) {
+  @include vw-resp(padding-left, $pc, $sp);
+}
+
+@mixin padding-vw($top-pc, $right-pc, $bottom-pc, $left-pc,
+  $top-sp: null, $right-sp: null, $bottom-sp: null, $left-sp: null) {
+  @include padding-top-vw($top-pc, $top-sp);
+  @include padding-right-vw($right-pc, $right-sp);
+  @include padding-bottom-vw($bottom-pc, $bottom-sp);
+  @include padding-left-vw($left-pc, $left-sp);
+}
+
+/* =====================================================================
+   フォント・角丸・位置
+   ===================================================================== */
+@mixin font-vw($pc, $sp: null) {
+  @include vw-resp(font-size, $pc, $sp);
+}
+
+@mixin border-radius-vw($pc, $sp: null) {
+  @include vw-resp(border-radius, $pc, $sp);
+}
+
+@mixin top-vw($pc, $sp: null) {
+  @include vw-resp(top, $pc, $sp);
+}
+
+@mixin right-vw($pc, $sp: null) {
+  @include vw-resp(right, $pc, $sp);
+}
+
+@mixin bottom-vw($pc, $sp: null) {
+  @include vw-resp(bottom, $pc, $sp);
+}
+
+@mixin left-vw($pc, $sp: null) {
+  @include vw-resp(left, $pc, $sp);
+}
+
+/* =====================================================================
+   ボーダー（幅は vw 変換／style・color は共通）
+   ===================================================================== */
+
+/* 幅・スタイル・色をまとめて指定（全辺） */
+@mixin border-vw($width-pc,
+  $width-sp: null,
+  $style: solid,
+  $color: currentColor,
+  $imp: false) {
+  $important: if($imp, " !important", "");
+
+  & {
+    border: #{px-to-vw($width-pc)} #{$style} #{$color}#{$important};
+  }
+
+  @if $width-sp !=null {
+    @include sp-only {
+      border-width: sp-px-to-vw($width-sp)#{$important};
+    }
+  }
+}
+
+/* 各辺ごとの指定 */
+@mixin border-top-vw($width-pc,
+  $width-sp: null,
+  $style: solid,
+  $color: currentColor,
+  $imp: false) {
+  $important: if($imp, " !important", "");
+
+  & {
+    border-top: #{px-to-vw($width-pc)} #{$style} #{$color}#{$important};
+  }
+
+  @if $width-sp !=null {
+    @include sp-only {
+      border-top-width: sp-px-to-vw($width-sp)#{$important};
+    }
+  }
+}
+
+@mixin border-right-vw($width-pc,
+  $width-sp: null,
+  $style: solid,
+  $color: currentColor,
+  $imp: false) {
+  $important: if($imp, " !important", "");
+
+  & {
+    border-right: #{px-to-vw($width-pc)} #{$style} #{$color}#{$important};
+  }
+
+  @if $width-sp !=null {
+    @include sp-only {
+      border-right-width: sp-px-to-vw($width-sp)#{$important};
+    }
+  }
+}
+
+@mixin border-bottom-vw($width-pc,
+  $width-sp: null,
+  $style: solid,
+  $color: currentColor,
+  $imp: false) {
+  $important: if($imp, " !important", "");
+
+  & {
+    border-bottom: #{px-to-vw($width-pc)} #{$style} #{$color}#{$important};
+  }
+
+  @if $width-sp !=null {
+    @include sp-only {
+      border-bottom-width: sp-px-to-vw($width-sp)#{$important};
+    }
+  }
+}
+
+@mixin border-left-vw($width-pc,
+  $width-sp: null,
+  $style: solid,
+  $color: currentColor,
+  $imp: false) {
+  $important: if($imp, " !important", "");
+
+  & {
+    border-left: #{px-to-vw($width-pc)} #{$style} #{$color}#{$important};
+  }
+
+  @if $width-sp !=null {
+    @include sp-only {
+      border-left-width: sp-px-to-vw($width-sp)#{$important};
+    }
+  }
+}
+
+/* 既存のスタイル/色を維持して「幅だけ」vwで変えたい場合 */
+@mixin border-width-vw($pc, $sp: null, $imp: false) {
+  $important: if($imp, " !important", "");
+
+  & {
+    border-width: px-to-vw($pc)#{$important};
+  }
+
+  @if $sp !=null {
+    @include sp-only {
+      border-width: sp-px-to-vw($sp)#{$important};
+    }
+  }
+}
+
+/* 軸別（上下=Y、左右=X） */
+@mixin border-y-vw($pc, $sp: null, $style: solid, $color: currentColor, $imp: false) {
+  @include border-top-vw($pc, $sp, $style, $color, $imp);
+  @include border-bottom-vw($pc, $sp, $style, $color, $imp);
+}
+
+@mixin border-x-vw($pc, $sp: null, $style: solid, $color: currentColor, $imp: false) {
+  @include border-left-vw($pc, $sp, $style, $color, $imp);
+  @include border-right-vw($pc, $sp, $style, $color, $imp);
+}
+
+/* ---------------------------------------------------------------------
+   使用例
+   ------------------------------------------------------------------ */
+/*
+.card {
+  @include border-vw(2, 1, solid, rgba(0,0,0,.1)); // PC:2px / SP:1px
+  @include border-radius-vw(12, 8);
+}
+
+.list__item {
+  @include border-bottom-vw(1, 1, dashed, #ccc);
+}
+
+.badge {
+  // 既存の border-color/border-style を保持しつつ幅だけ変更
+  border: solid currentColor; // 初期化
+  @include border-width-vw(2, 1);
+}
+*/
+
+
+/* =====================================================================
+   変形 / 影
+   ===================================================================== */
+@mixin translateY-vw($pc, $sp: null) {
+  & {
+    transform: translateY(px-to-vw($pc));
+  }
+
+  @if $sp !=null {
+    @include sp-only {
+      transform: translateY(sp-px-to-vw($sp));
+    }
+  }
+}
+
+@mixin translateX-vw($pc, $sp: null) {
+  & {
+    transform: translateX(px-to-vw($pc));
+  }
+
+  @if $sp !=null {
+    @include sp-only {
+      transform: translateX(sp-px-to-vw($sp));
+    }
+  }
+}
+
+@mixin box-shadow-vw($x-pc, $y-pc, $blur-pc, $spread-pc, $color,
+  $x-sp: null, $y-sp: null, $blur-sp: null, $spread-sp: null) {
+  & {
+    box-shadow: px-to-vw($x-pc) px-to-vw($y-pc) px-to-vw($blur-pc) px-to-vw($spread-pc) $color;
+  }
+
+  @if $x-sp !=null and $y-sp !=null and $blur-sp !=null and $spread-sp !=null {
+    @include sp-only {
+      box-shadow: sp-px-to-vw($x-sp) sp-px-to-vw($y-sp) sp-px-to-vw($blur-sp) sp-px-to-vw($spread-sp) $color;
+    }
+  }
+}
+
+@mixin text-shadow-vw($x-pc, $y-pc, $blur-pc, $color,
+  $x-sp: null, $y-sp: null, $blur-sp: null) {
+  & {
+    text-shadow: px-to-vw($x-pc) px-to-vw($y-pc) px-to-vw($blur-pc) $color;
+  }
+
+  @if $x-sp !=null and $y-sp !=null and $blur-sp !=null {
+    @include sp-only {
+      text-shadow: sp-px-to-vw($x-sp) sp-px-to-vw($y-sp) sp-px-to-vw($blur-sp) $color;
+    }
+  }
+}
+
+
+/* =====================================================================
+   固定グラデーション – テキスト
+   ===================================================================== */
+// @mixin gradient-text {
+//   background: $gradation-brown;
+//   -webkit-background-clip: text;
+//   -webkit-text-fill-color: transparent;
+//   background-clip: text;
+//   color: transparent;
+// }
+
+/* ---------------------------------------------------------------------
+   使用例（コピーして使う）
+   ------------------------------------------------------------------ */
+/*
+.example-heading {
+  @include gradient-text;     // 固定グラデをテキストに適用
+  @include font-vw(28, 18);   // フォントサイズ：PC 28px / SP 18px
+}
+*/
