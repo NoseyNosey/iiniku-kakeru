@@ -5,10 +5,6 @@ section {
   position: relative;
 }
 
-html {
-  overflow-x: hidden;
-}
-
 img {
   max-width: 100%;
   width: 100%;
@@ -306,6 +302,7 @@ img {
   @include sp-only {
     @include padding-left-vw(0, 20);
     @include padding-right-vw(0, 20);
+      overflow: hidden;
   }
   .c-description01 {
     @include margin-bottom-vw(60, 40);
@@ -377,7 +374,7 @@ img {
         border-top-left-radius: 0;
         border-bottom-left-radius: 0;
         @include sp-only {
-          @include left-vw(0, -20);
+          @include left-vw(0, -21);
         }
       }
       &::after {
@@ -394,7 +391,7 @@ img {
         border-top-right-radius: 0;
         border-bottom-right-radius: 0;
         @include sp-only {
-          @include right-vw(0, -20);
+          @include right-vw(0, -21);
         }
       }
       &::after {
@@ -469,6 +466,7 @@ img {
     color: $color-white;
     background-color: $color-black;
     display: inline-block;
+    @include border-vw(1, 1, solid, $color-white);
     @include border-radius-vw(3, 3);
     @include padding-vw(3, 5, 1, 10, 10, 10, 6, 10);
     @include font-vw(13, 12);
@@ -656,7 +654,7 @@ img {
     @include padding-left-vw(20, 10);
     @include sp-only {
       flex-wrap: wrap;
-    @include padding-right-vw(0, 10);
+      @include padding-right-vw(0, 10);
     }
   }
   &__nav-top-item {
@@ -668,7 +666,7 @@ img {
       display: block;
       @include font-vw(13, 13);
       @include sp-only {
-          line-height: 1.4;
+        line-height: 1.4;
       }
     }
     + .l-footer__nav-top-item {
@@ -698,7 +696,7 @@ img {
     @include padding-left-vw(20, 10);
     @include sp-only {
       flex-wrap: wrap;
-          @include padding-right-vw(0, 10);
+      @include padding-right-vw(0, 10);
     }
   }
 
@@ -731,7 +729,7 @@ img {
     @include top-vw(2);
     @include sp-only {
       position: static;
-      @include margin-top-vw(0,12);
+      @include margin-top-vw(0, 12);
     }
     a {
       display: block;

@@ -2959,10 +2959,6 @@ section {
   position: relative;
 }
 
-html {
-  overflow-x: hidden;
-}
-
 img {
   max-width: 100%;
   width: 100%;
@@ -3600,6 +3596,9 @@ img {
   .p-home-gift {
     padding-left: 0;
   }
+  .p-home-gift {
+    overflow: hidden;
+  }
 }
 @media (max-width: 768px) and (max-width: 768px) {
   .p-home-gift {
@@ -3743,7 +3742,7 @@ img {
 }
 @media (max-width: 768px) and (max-width: 768px) {
   .l-num__image.--left img {
-    left: -5.3333333333vw;
+    left: -5.6vw;
   }
 }
 .l-num__image.--left::after {
@@ -3774,7 +3773,7 @@ img {
 }
 @media (max-width: 768px) and (max-width: 768px) {
   .l-num__image.--right img {
-    right: -5.3333333333vw;
+    right: -5.6vw;
   }
 }
 .l-num__image.--right::after {
@@ -3934,6 +3933,14 @@ img {
   color: #fff;
   background-color: #2C2C2C;
   display: inline-block;
+}
+.l-num__text03 {
+  border: 0.0694444444vw solid #fff;
+}
+@media (max-width: 768px) {
+  .l-num__text03 {
+    border-width: 0.2666666667vw;
+  }
 }
 .l-num__text03 {
   border-radius: 0.2083333333vw;
