@@ -1,107 +1,287 @@
-@use '../../foundations/variables'as *;
-@use '../../foundations/mixins'as *;
+@use "../../foundations/variables" as *;
+@use "../../foundations/mixins" as *;
 
-.c-button {
-    &.--ghost {
-
-        a,
-        button {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: $color-white;
-            font-weight: $font-weight-bold;
-            @include border-vw(1, 1, solid, $color-white);
-            @include text-shadow-vw(0, 4, 6, $color-black-alpha-25, 0, 4, 6);
-            @include box-shadow-vw(0, 4, 6, 0, $color-black-alpha-25, 0, 4, 6, 0);
-            @include border-radius-vw(6, 6);
-            @include font-vw(20, 16);
-            @include width-vw(278);
-            @include height-vw(55, 55);
-
-            @include sp-only {
-                width: 100%;
-            }
-
-            &:hover {
-                @include pc-only {
-                    opacity: 1;
-                    @include box-shadow-vw(0, 4, 10, 0, $color-black-alpha-50);
-                }
-            }
-        }
+.c-button01 {
+  a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: $color-white;
+    font-weight: $font-weight-medium;
+    position: relative;
+    background-color: $color-black;
+    overflow: hidden;
+    transition: $transition;
+    @include border-radius-vw(4, 4);
+    @include border-vw(1, 1, solid, $color-black);
+    @include font-vw(16, 16);
+    @include width-vw(300, 300);
+    @include height-vw(60, 60);
+      @include sp-only {
+    
+  }
+    &::before {
+      content: "";
+      display: block;
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      background-color: $color-white;
+      transition: $transition;
+      clip-path: polygon(0 0, 100% 100%, 0 100%);
+      @include width-vw(18, 18);
+      @include height-vw(18, 18);
+        @include sp-only {
+    
+  }
     }
-
-    &.--primary {
-
-        a,
-        button {
-            color: $color-black;
-            font-weight: $font-weight-medium;
-            position: relative;
-            display: inline-block;
-            @include padding-right-vw(25, 30);
-            @include padding-left-vw(10, 10);
-            @include padding-bottom-vw(2, 2);
-            @include font-vw(12, 12);
-
-            @include sp-only {}
-
-            // &::after {
-            //     content: "";
-            //     display: block;
-            //     position: absolute;
-            //     background: url(../../../assets/images/common/arrow01-black-right.svg) no-repeat center / 100% 100%;
-            //     right: 0;
-            //     transition: $transition;
-            //     @include bottom-vw(-3, -3);
-            //     @include width-vw(30, 30);
-            //     @include height-vw(30, 30);
-
-            //     @include sp-only {}
-            // }
-
-            &::before {
-                content: "";
-                display: block;
-                position: absolute;
-                bottom: 0;
-                background-color: $color-black;
-                width: 100%;
-                left: 0;
-                @include height-vw(1, 1);
-
-                @include sp-only {}
-            }
-
-
-            &:hover {
-                .c-button__arrow {
-                    @include pc-only {
-                        opacity: 1;
-                        @include translateX-vw(5, 0);
-                    }
-                }
-            }
-        }
-
-
-        button {
-            @include padding-bottom-vw(3,3);
-        }
-
+    &::after {
+      content: "";
+      display: block;
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      margin: auto;
+      background: url(/assets/images/common/arrow01-right-white.svg) no-repeat
+        center / 100%;
+      transition: $transition;
+      @include width-vw(30, 30);
+      @include height-vw(30, 30);
+      @include right-vw(15, 15);
+        @include sp-only {
+    
+  }
     }
+    &:hover {
+      color: $color-black;
+      @include pc-only {
+        opacity: 1;
+        background-color: $color-white;
+      }
+      &::before {
+        @include pc-only {
+          background-color: $color-black;
+        }
+      }
 
+      &::after {
+        @include pc-only {
+          background-image: url(/assets/images/common/arrow01-right-black.svg);
+          @include translateX-vw(6);
+        }
+      }
+    }
+  }
 
-    &__arrow {
+  &.--white {
+    a {
+      border-color: $color-white;
+      background-color: $color-white;
+      color: $color-black;
+      &::before {
+        background-color: $color-black;
+      }
+      &::after {
+        background-image: url(/assets/images/common/arrow01-right-black.svg);
+      }
+
+      &:hover {
+        @include pc-only {
+          color: $color-white;
+          background-color: $color-black;
+        }
+
+        &::before {
+          @include pc-only {
+            background-color: $color-white;
+          }
+        }
+
+        &::after {
+          @include pc-only {
+            background-image: url(/assets/images/common/arrow01-right-white.svg);
+          }
+        }
+      }
+    }
+  }
+}
+
+.floating-button {
+  position: fixed;
+  right: 0;
+  z-index: 3;
+  @include bottom-vw(50, 50);
+    @include sp-only {
+    
+  }
+  a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: $color-white;
+    font-weight: $font-weight-medium;
+    position: relative;
+    background-color: $color-red;
+    overflow: hidden;
+    letter-spacing: -0.15em;
+    transition: $transition;
+    writing-mode: vertical-rl;
+    text-orientation: mixed;
+    border-top-right-radius: 0 !important;
+    border-bottom-right-radius: 0 !important;
+    @include border-radius-vw(4, 4);
+    @include border-vw(1, 1, solid, $color-red);
+    @include font-vw(16, 12);
+    @include width-vw(60, 45);
+    @include height-vw(200, 150);
+    @include padding-bottom-vw(25, 25);
+      @include sp-only {
+    
+  }
+    &::before {
+      content: "";
+      display: block;
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      background-color: $color-white;
+      transition: $transition;
+      clip-path: polygon(0 0, 100% 100%, 0 100%);
+      @include width-vw(18, 18);
+      @include height-vw(18, 18);
+        @include sp-only {
+    
+  }
+    }
+    &::after {
+      content: "";
+      display: block;
+      position: absolute;
+      left: 0;
+      right: 0;
+      margin: auto;
+      background: url(/assets/images/common/icon-cart-white.svg) no-repeat
+        center / 100%;
+      transition: $transition;
+      @include bottom-vw(20, 15);
+      @include width-vw(30, 25);
+      @include height-vw(30, 25);
+        @include sp-only {
+    
+  }
+    }
+    &:hover {
+      color: $color-red;
+      @include pc-only {
+        opacity: 1;
+        background-color: $color-white;
+      }
+      &::before {
+        @include pc-only {
+          background-color: $color-red;
+        }
+      }
+
+      &::after {
+        @include pc-only {
+          background-image: url(/assets/images/common/icon-cart-red.svg);
+        }
+      }
+    }
+  }
+}
+
+.l-button-and-cursol {
+  display: flex;
+  align-items: center;
+  position: absolute;
+  @include right-vw(50, 10);
+  @include top-vw(120, 50);
+    @include sp-only {
+    display: block;
+  }
+
+  &.--right {
+    right: 0;
+    @include top-vw(40, 40);
+      @include sp-only {
+    
+  }
+  }
+
+  &__button {
+       @include sp-only {
+        text-align: right;
+        @include margin-bottom-vw(0,5);
+       }
+    a {
+      position: relative;
+      font-weight: $font-weight-medium;
+      @include padding-right-vw(25, 25);
+      @include font-vw(12, 12);
+      &::after {
+        content: "";
         display: block;
         position: absolute;
-        background: url(../../../assets/images/common/arrow01-black-right.svg) no-repeat center / 100% 100%;
         right: 0;
-        transition: $transition;
-        @include bottom-vw(-3, -3);
-        @include width-vw(30, 30);
-        @include height-vw(30, 30);
-
+        top: 0;
+        bottom: 0;
+        margin: auto;
+        background: url(/assets/images/common/icon-list-black.svg) no-repeat
+          center / 100%;
+        @include width-vw(24, 24);
+        @include height-vw(24, 24);
+          @include sp-only {
+    
+  }
+      }
     }
+  }
+  &__cursol {
+    display: flex;
+    position: relative;
+    @include padding-left-vw(20, 20);
+    @include margin-left-vw(20, 20);
+      @include sp-only {
+    
+  }
+    &::before {
+      content: "";
+      display: block;
+      background-color: $color-black;
+      position: absolute;
+      left: 0;
+      top: 0;
+      bottom: 0;
+      margin: auto;
+      @include width-vw(1, 1);
+      @include height-vw(35, 35);
+        @include sp-only {
+          display: none;
+    
+  }
+    }
+    div {
+      cursor: pointer;
+      transition: $transition;
+      @include width-vw(42,42);
+        @include sp-only {
+    
+  }
+      &:nth-child(1) {
+        @include margin-right-vw(10, 10);
+          @include sp-only {
+    
+  }
+      }
+      &:nth-child(2) {
+      }
+      &:hover {
+        @include pc-only {
+          opacity: 0.7;
+        }
+      }
+    }
+  }
 }

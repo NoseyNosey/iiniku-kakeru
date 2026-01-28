@@ -15,10 +15,9 @@ body {
   font-size: 100%;
   font: inherit;
   vertical-align: baseline;
-  font-family: sans-serif;
-  line-height: 1.6;
+  line-height: 1.8;
   color: $color-black;
-  letter-spacing: 0.03em;
+  letter-spacing: 0.5em;
   font-weight: $font-weight-regular;
   font-family: $font-primary;
   -webkit-text-size-adjust: 100%;
@@ -236,8 +235,4 @@ textarea::placeholder {
   ¥hidden 属性を適切に処理 */
 [hidden] {
   display: none;
-}
-
-main {
-  @include padding-top-vw(120,60);
 }

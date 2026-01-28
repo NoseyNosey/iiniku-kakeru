@@ -1,292 +1,284 @@
-@use '../foundations/variables'as *;
-@use '../foundations/mixins'as *;
+@use "../foundations/variables" as *;
+@use "../foundations/mixins" as *;
 
 .l-header {
-	position: fixed;
-	z-index: 2;
-	width: 100%;
+  position: fixed;
+  left: 0;
+  right: 0;
+  z-index: 10;
+  @include top-vw(35, 20);
+  @include sp-only {
+  }
+  .l-inner {
+    display: flex;
+    justify-content: space-between;
+    @include sp-only {
+    }
+  }
 
-	@include sp-only {}
+  &__logo {
+    position: relative;
+    z-index: 3;
+    @include sp-only {
+            display: flex;
+      align-items: center;
+    }
+    a {
+      display: block;
+      @include width-vw(100, 100);
+    }
+  }
 
-	&__inner {
-		background: url(../../assets/images/common/header-bg.png) no-repeat center / cover;
-		@include height-vw(120, 60);
-		@include padding-top-vw(27, 18);
+  &__main-list {
+    position: relative;
+    display: flex;
+    z-index: 3;
+    @include sp-only {
+      @include margin-right-vw(0, 20);
+    }
+  }
 
-		@include sp-only {}
-	}
+  &__main-item {
+    background-color: $color-white;
+    transition: $transition;
+    cursor: pointer;
+    @include border-vw(1, 1, solid, $color-black);
+    @include border-radius-vw(5, 5);
+    @include width-vw(50, 50);
+    @include height-vw(50, 50);
+    @include sp-only {
+    }
+    a {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+      height: 100%;
+      @include sp-only {
+      }
+      img {
+        @include width-vw(30, 30);
+        @include sp-only {
+        }
+      }
+    }
+    + .l-header__main-item {
+      @include margin-left-vw(15, 10);
+      @include sp-only {
+      }
+    }
 
-	&__logo {
-		display: inline-block;
-		z-index: 2;
-		@include width-vw(134, 100);
-		@include margin-bottom-vw(10, 15);
+    &:hover {
+      @include pc-only {
+        opacity: 0.7;
+      }
+    }
+  }
 
-		@include sp-only {}
-	}
+  &__main-child {
+    &:hover {
+      @include pc-only {
+        opacity: 1;
+      }
+    }
+  }
 
-	&__nav {
-		width: 100%;
+  &__menu {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    @include sp-only {
+    }
+  }
 
-		@include sp-only {
-			display: none;
-		}
-	}
+  &__menu-inner {
+    position: relative;
+    @include width-vw(25, 25);
+    @include height-vw(15, 15);
+    @include sp-only {
+    }
+    div {
+      background-color: $color-black;
+      position: absolute;
+      width: 100%;
+      transition: $transition;
+      @include height-vw(1, 1);
+      @include sp-only {
+      }
+      &:nth-child(1) {
+        top: 0;
+        @include sp-only {
+        
+        }
+      }
+      &:nth-child(2) {
+        top: 0;
+        bottom: 0;
+        margin: auto;
+      }
+      &:nth-child(3) {
+        bottom: 0;
+        @include sp-only {
+         
+        }
+      }
+    }
+  }
 
-	&__nav-list {
-		display: flex;
-		justify-content: center;
-		align-items: center;
+  &__open-menu {
+    transition: $transition;
+    opacity: 0;
+    pointer-events: none;
+    position: fixed;
+    z-index: 2;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    @include sp-only {
+      @include padding-left-vw(0, 20);
+      @include padding-left-vw(0, 20);
+    }
+  }
 
-		@include sp-only {}
-	}
+  &__open-menu-list {
+    display: flex;
+    justify-content: center;
+    @include sp-only {
+      flex-wrap: wrap;
+      justify-content: flex-start;
+    }
+    &.--sm {
+      scale: (0.9);
+      @include sp-only {
+        @include margin-left-vw(0, -18);
+      }
 
-	&__nav-item {
-		+.l-header__nav-item {
-			@include margin-left-vw(30, 20);
+      .l-header__open-menu-item:nth-child(2n) {
+        @include padding-left-vw(0, 12);
+      }
+    }
+    &:first-child {
+      @include margin-bottom-vw(50, 20);
+    }
+  }
 
-			@include sp-only {}
-		}
+  &__open-menu-item {
+    @include sp-only {
+      width: 50%;
+      @include margin-bottom-vw(0, 20);
+    }
+    a {
+      color: $color-black;
+      line-height: 1;
+      display: inline-block;
+      position: relative;
+      @include sp-only {
+      }
+      .en {
+        display: block;
+        letter-spacing: $letter-spacing-1;
+        font-weight: $font-weight-medium;
+        @include margin-bottom-vw(10, 5);
+        @include font-vw(10, 10);
+        @include sp-only {
+        }
+      }
+      .jp {
+        display: block;
+        font-weight: $font-weight-medium;
+        @include font-vw(18, 18);
+        @include sp-only {
+          line-height: 1.4;
+        }
+      }
 
-		@include sp-only {}
-	}
+      &::after {
+        content: "";
+        position: absolute;
+        left: 0;
+        width: 100%;
+        background-color: currentColor;
+        transform: scaleX(0);
+        transform-origin: left;
+        transition: $transition;
+        @include bottom-vw(-5, -5);
+        @include height-vw(1, 1);
+        @include sp-only {
+        }
+      }
 
-	&__nav-link {
-		@include font-vw(14, 14);
+      &:hover {
+        opacity: 1;
+        &::after {
+          @include pc-only {
+            transform: scaleX(1);
+          }
+        }
+      }
+    }
 
-		@include sp-only {}
-	}
+    + .l-header__open-menu-item {
+      @include margin-left-vw(50, 0);
+      @include sp-only {
+      }
+    }
 
-	&__menu-toggle {
-		position: fixed;
-		z-index: 2;
-		@include height-vw(12, 12);
-		@include width-vw(45, 30);
-		@include top-vw(42);
-		@include right-vw(30, 15);
+    &:nth-child(3n) {
+      @include sp-only {
+        margin-left: 0;
+      }
+    }
+  }
 
-		@include sp-only {
-			position: absolute;
-			top: 0;
-			bottom: 0;
-			margin: auto;
-		}
+  &__open-menu-border {
+  }
 
-		&.is-open {
-			.l-header__menu-bar {
-
-
-				&:nth-child(1) {
-					transform: rotate(30deg);
-					@include top-vw(5, 5);
-				}
-
-				&:nth-child(2) {
-					opacity: 0;
-				}
-
-				&:nth-child(3) {
-					transform: rotate(-30deg);
-					@include bottom-vw(6, 5);
-				}
-			}
-		}
-	}
-
-	&__menu-bar {
-		background-color: $color-black;
-		position: absolute;
-		width: 100%;
-		transition: $transition;
-		@include height-vw(1, 1);
-
-		@include sp-only {}
-
-
-		&:nth-child(1) {
-			top: 0;
-		}
-
-		&:nth-child(2) {
-			margin: auto;
-		}
-
-		&:nth-child(3) {
-			bottom: 0;
-		}
-	}
-
-	&__drawer {
-		opacity: 0;
-		pointer-events: none;
-		background: url(../../assets/images/common/header-open-bg.png) no-repeat center / cover;
-		z-index: 1;
-		position: fixed;
-		top: 0;
-		right: 0;
-		left: 0;
-		display: flex;
-		transition: $transition;
-		@include height-vw(755);
-
-		@include sp-only {
-			height: 100vh;
-		}
-
-		&.is-open {
-			opacity: 1;
-			pointer-events: all;
-		}
-	}
-
-	&__drawer-media {
-		width: 42%;
-
-		@include sp-only {
-			display: none;
-		}
-	}
-
-	&__drawer-body {
-		width: 58%;
-
-		@include sp-only {
-			width: 100%;
-			height: 100dvh;
-			overflow-y: auto;
-			-webkit-overflow-scrolling: touch;
-			overscroll-behavior: contain;
-		}
-	}
-
-	&__drawer-nav {
-		display: flex;
-		position: relative;
-		@include padding-vw(100, 60, 60, 60, 70, 20, 20, 20);
-
-		@include sp-only {}
-	}
-
-	&__drawer-list {
-		@include sp-only {
-			width: 100%;
-			display: flex;
-			flex-wrap: wrap;
-		}
-	}
-
-	&__drawer-item {
-			@include margin-bottom-vw(10, 10);
-
-		@include sp-only {
-			width: 50%;
-		}
-
-		a {
-			@include gradient-text;
-		}
-
-		&.--about {
-			position: absolute;
-			@include top-vw(95, 20);
-			@include right-vw(200, 20);
-
-			@include sp-only {
-				width: 100%;
-				position: static;
-			}
-		}
-	}
-
-	&__drawer-link {
-		font-weight: $font-weight-regular;
-		transition: ease-in-out 0.3s;
-		@include font-vw(46, 30);
-
-		@include pc-only {
-			&:hover {
-				// opacity: 1;
-			}
-		}
-
-		@include sp-only {
-			display: block;
-			line-height: 1.2;
-			@include margin-bottom-vw(0, 10);
-		}
-
-		&.--no-link {
-			@include pc-only {
-				@include margin-bottom-vw(10, 0);
-			}
-		}
-	}
-
-	&__drawer-children {
-		@include sp-only {
-			display: flex;
-			flex-wrap: wrap;
-		}
-	}
-
-	&__drawer-child {
-		@include gradient-text;
-		@include font-vw(30, 20);
-
-		@include sp-only {
-			width: 50%;
-		}
-
-		+.l-header__drawer-child {
-			@include margin-top-vw(10, 0);
-
-			@include sp-only {
-				@include margin-bottom-vw(0, 10);
-			}
-		}
-
-		a {
-			@include pc-only {
-				&:hover {
-					// opacity: 1;
-				}
-			}
-		}
-	}
-
-	&__drawer-copyright {
-		position: absolute;
-		font-weight: $font-weight-regular;
-		@include gradient-text;
-		@include font-vw(14, 12);
-		@include bottom-vw(20, 15);
-		@include right-vw(30, 15);
-
-		@include sp-only {
-
-		}
-	}
+  &.is-active {
+    .l-header__menu-inner {
+      div {
+        &:nth-child(1) {
+          transform: rotate(45deg);
+          @include top-vw(8, 8);
+          @include sp-only {
+          }
+        }
+        &:nth-child(2) {
+          opacity: 0;
+        }
+        &:nth-child(3) {
+          transform: rotate(-45deg);
+          @include bottom-vw(6,6);
+          @include sp-only {
+          }
+        }
+      }
+    }
+    .l-header__open-menu {
+      opacity: 1;
+      pointer-events: all;
+    }
+  }
 }
 
-.l-header-overlay {
-	opacity: 0;
-	pointer-events: none;
-	transition: $transition;
-	background: rgba(0, 0, 0, .25);
-	backdrop-filter: none;
-	-webkit-backdrop-filter: none;
-	position: fixed;
-	inset: 0;
-	z-index: 1;
-
-	@include sp-only {}
-
-	&.is-open {
-		opacity: 1;
-		z-index: 1;
-		backdrop-filter: blur(6px);
-		-webkit-backdrop-filter: blur(6px);
-
-		@include sp-only {}
-	}
+.overlay {
+  transition: $transition;
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 1;
+  background-color: $color-white;
+  opacity: 0;
+  pointer-events: none;
+  &.is-active {
+    opacity: 1;
+  }
 }

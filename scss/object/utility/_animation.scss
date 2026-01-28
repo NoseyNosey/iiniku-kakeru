@@ -18,3 +18,49 @@
       opacity: 0;
   }
 }
+
+.fade {
+  opacity: 0;
+  transition: opacity .6s ease, transform .6s ease;
+}
+
+/* 初期位置 */
+.fade-up    { transform: translateY(30px); }
+.fade-down  { transform: translateY(-30px); }
+.fade-left  { transform: translateX(30px); }
+.fade-right { transform: translateX(-30px); }
+
+/* 表示後 */
+.fade.is-show {
+  opacity: 1;
+  transform: translate(0, 0);
+}
+
+/* ==========================================
+  Text animation (scroll / once / fade)
+========================================== */
+
+.js-text-anim {
+  overflow: hidden;
+  visibility: hidden;   // レイアウト保持
+  opacity: 0;           // ← 追加：表示前は透明
+
+  .char {
+    display: inline-block;
+    transform: translateY(105%);
+    opacity: 0;
+    transition:
+      transform 0.5s cubic-bezier(0.215, 0.61, 0.355, 1),
+      opacity 0.4s ease;
+  }
+
+  &.-visible {
+    visibility: visible;
+    opacity: 1;
+
+    .char {
+      transform: translateY(0);
+      opacity: 1;
+    }
+  }
+}

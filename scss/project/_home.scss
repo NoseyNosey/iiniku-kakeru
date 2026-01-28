@@ -1,3 +1,740 @@
-@use '../foundations/variables'as *;
-@use '../foundations/mixins'as *;
+@use "../foundations/variables" as *;
+@use "../foundations/mixins" as *;
 
+section {
+  position: relative;
+}
+
+html {
+  overflow-x: hidden;
+}
+
+img {
+  max-width: 100%;
+  width: 100%;
+}
+
+.p-home-mv {
+  background: url(/assets/images/home/mv-bg.png) no-repeat center / cover;
+
+  @include padding-top-vw(120, 100);
+  @include padding-bottom-vw(80, 50);
+
+  @include sp-only {
+    @include padding-left-vw(0, 20);
+    @include padding-right-vw(0, 20);
+    background-image: url(/assets/images/home/mv-bg-sp.png);
+  }
+
+  &__title {
+    color: $color-white;
+    font-weight: $font-weight-medium;
+    line-height: 1.5;
+    letter-spacing: $letter-spacing-1;
+    @include font-vw(46, 32);
+    @include margin-bottom-vw(20, 10);
+    @include sp-only {
+    }
+    span {
+      text-decoration: underline;
+      text-underline-offset: 0.2em;
+      text-decoration-thickness: 0.02em;
+      @include font-vw(50, 38);
+      @include sp-only {
+      }
+    }
+  }
+  &__sub-title {
+    color: $color-white;
+    line-height: 2.2;
+    letter-spacing: $letter-spacing-1;
+    @include margin-bottom-vw(25, 25);
+    @include font-vw(18, 16);
+    @include sp-only {
+    }
+    span {
+      font-weight: $font-weight-medium;
+      @include font-vw(28, 20);
+      @include sp-only {
+      }
+    }
+  }
+
+  &__list {
+    display: flex;
+    @include margin-bottom-vw(50, 50);
+    @include sp-only {
+      display: block;
+    }
+    li {
+      background-color: $color-black;
+      font-weight: $font-weight-medium;
+      color: $color-white;
+      @include border-vw(1, 1, solid, $color-white);
+      @include border-radius-vw(3, 3);
+      @include padding-vw(2, 8, 2, 8, 4, 8, 2, 8);
+      @include font-vw(13, 13);
+      @include sp-only {
+        width: 100%;
+        text-align: center;
+      }
+      + li {
+        @include margin-left-vw(10, 0);
+        @include sp-only {
+          @include margin-top-vw(10, 10);
+        }
+      }
+    }
+  }
+
+  .c-button01 {
+    @include sp-only {
+      display: flex;
+      justify-content: center;
+    }
+  }
+}
+
+.p-home-aboutus {
+  @include border-bottom-vw(1, 1, solid, $color-black);
+  @include padding-top-vw(100, 50);
+  @include padding-bottom-vw(100, 50);
+  @include sp-only {
+    @include padding-left-vw(0, 20);
+    @include padding-right-vw(0, 20);
+  }
+
+  .c-description01 {
+    @include margin-bottom-vw(50, 30);
+    @include sp-only {
+      text-align: left;
+    }
+  }
+}
+
+.p-home-ranking {
+  @include border-bottom-vw(1, 1, solid, $color-black);
+  @include padding-top-vw(100, 50);
+  @include padding-bottom-vw(100, 50);
+  @include sp-only {
+    @include padding-left-vw(0, 20);
+    @include padding-right-vw(0, 20);
+  }
+}
+
+.l-products-slider {
+  @include sp-only {
+    @include margin-left-vw(0, -20);
+    @include margin-right-vw(0, -20);
+  }
+}
+
+.l-instagram-slider {
+  @include sp-only {
+    @include margin-left-vw(0, -20);
+    @include margin-right-vw(0, -20);
+  }
+}
+
+.l-products-list {
+  display: flex;
+  justify-content: space-between;
+  @include sp-only {
+  }
+  &__item {
+    @include width-vw(360, 360);
+    @include sp-only {
+    }
+    a {
+      display: block;
+    }
+  }
+  &__img {
+    position: relative;
+    &::after {
+      content: "";
+      display: block;
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      z-index: 1;
+      background-color: $color-white;
+      @include border-radius-vw(16, 16);
+      @include bottom-vw(-10, -10);
+      @include right-vw(-10, -10);
+      @include border-vw(1, 1, solid, $color-black);
+      @include sp-only {
+      }
+    }
+    img {
+      overflow: hidden;
+      position: relative;
+      z-index: 2;
+      @include border-vw(1, 1, solid, $color-black);
+      @include border-radius-vw(16, 16);
+      @include sp-only {
+      }
+    }
+  }
+  &__text01 {
+    font-weight: $font-weight-medium;
+    @include font-vw(16, 16);
+    @include margin-top-vw(25, 25);
+    @include sp-only {
+    }
+  }
+  &__text02 {
+    @include font-vw(14, 14);
+    @include margin-bottom-vw(15, 15);
+    @include sp-only {
+    }
+  }
+  &__text03 {
+    line-height: 2.2;
+    @include font-vw(14, 14);
+    @include sp-only {
+    }
+  }
+  &.--slider {
+    .l-products-list__item {
+      @include width-vw(400, 400);
+      @include sp-only {
+      }
+    }
+  }
+}
+
+.swiper {
+  @include padding-bottom-vw(10, 10);
+  @include sp-only {
+  }
+}
+
+.js-swiper {
+  position: relative;
+  overflow: hidden;
+}
+
+/* 全スライド共通（基準） */
+.js-swiper.center-active .swiper-slide {
+  transition:
+    transform 0.4s ease,
+    opacity 0.4s ease;
+  transform: scale(0.95);
+  opacity: 0.7;
+}
+
+/* 👇 真ん中（アクティブ）だけ少し大きく */
+.js-swiper.center-active .swiper-slide-active {
+  transform: scale(1);
+  opacity: 1;
+}
+
+// .js-swiper::before,
+// .js-swiper::after {
+//   content: "";
+//   position: absolute;
+//   top: 0;
+//   height: 100%;
+//   z-index: 2;
+//   pointer-events: none;
+//     @include width-vw(40,40);
+// }
+
+// .js-swiper::before {
+//   left: 0;
+//   background: linear-gradient(
+//     to right,
+//     $color-gray 0%,
+//     rgba(255, 255, 255, 0) 100%
+//   );
+// }
+
+// .js-swiper::after {
+//   right: 0;
+//   background: linear-gradient(
+//     to left,
+//     $color-gray 0%,
+//     rgba(255, 255, 255, 0) 100%
+//   );
+// }
+
+.p-home-products {
+  @include border-bottom-vw(1, 1, solid, $color-black);
+  @include padding-top-vw(100, 50);
+  @include padding-bottom-vw(100, 50);
+  @include sp-only {
+    @include padding-left-vw(0, 20);
+    @include padding-right-vw(0, 20);
+  }
+
+  &__block {
+    + .p-home-products__block {
+      @include margin-top-vw(80, 50);
+      @include sp-only {
+      }
+    }
+  }
+  .c-button01 {
+    @include margin-top-vw(20, 20);
+    @include sp-only {
+    }
+  }
+
+  .l-products-list {
+    @include sp-only {
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+    &__item {
+      @include sp-only {
+        width: 90%;
+      }
+      + .l-products-list__item {
+        @include sp-only {
+          @include margin-top-vw(0, 30);
+        }
+      }
+    }
+  }
+}
+
+.p-home-gift {
+  @include border-bottom-vw(1, 1, solid, $color-black);
+  @include padding-top-vw(100, 50);
+  @include padding-bottom-vw(100, 50);
+  @include sp-only {
+    @include padding-left-vw(0, 20);
+    @include padding-right-vw(0, 20);
+  }
+  .c-description01 {
+    @include margin-bottom-vw(60, 40);
+    @include sp-only {
+      text-align: left;
+    }
+  }
+
+  .c-button01 {
+    @include margin-top-vw(65, 40);
+    @include sp-only {
+    }
+  }
+}
+
+.l-num {
+  position: relative;
+  @include sp-only {
+  }
+  &__item {
+    display: flex;
+    @include sp-only {
+      display: block;
+    }
+    &:nth-child(even) {
+      justify-content: flex-end;
+      @include sp-only {
+      }
+    }
+    + .l-num__item {
+      @include margin-top-vw(70, 50);
+      @include sp-only {
+      }
+    }
+  }
+  &__image {
+    position: relative;
+    @include width-vw(700);
+    @include sp-only {
+      width: 100%;
+    }
+
+    &::after {
+      content: "";
+      display: block;
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      z-index: 1;
+      background-color: $color-white;
+      @include border-radius-vw(16, 16);
+      @include bottom-vw(-10, -10);
+      @include right-vw(-10, -10);
+      @include border-vw(1, 1, solid, $color-black);
+      @include sp-only {
+      }
+    }
+    img {
+      overflow: hidden;
+      position: relative;
+      z-index: 2;
+      @include border-vw(1, 1, solid, $color-black);
+      @include border-radius-vw(16, 16);
+      @include sp-only {
+      }
+    }
+    &.--left {
+      img {
+        border-top-left-radius: 0;
+        border-bottom-left-radius: 0;
+        @include sp-only {
+          @include left-vw(0, -20);
+        }
+      }
+      &::after {
+        border-top-left-radius: 0;
+        border-bottom-left-radius: 0;
+        @include sp-only {
+          @include left-vw(0, -30);
+        }
+      }
+    }
+    &.--right {
+      order: 2;
+      img {
+        border-top-right-radius: 0;
+        border-bottom-right-radius: 0;
+        @include sp-only {
+          @include right-vw(0, -20);
+        }
+      }
+      &::after {
+        border-top-right-radius: 0;
+        border-bottom-right-radius: 0;
+        @include sp-only {
+          @include right-vw(0, -30);
+        }
+      }
+    }
+  }
+  &__texts {
+    @include margin-top-vw(40, 30);
+    @include sp-only {
+    }
+    &.--left {
+      @include margin-left-vw(55, 0);
+      @include sp-only {
+      }
+    }
+    &.--right {
+      @include margin-right-vw(55, 0);
+      @include sp-only {
+      }
+    }
+  }
+  &__text01 {
+    display: flex;
+    @include margin-bottom-vw(10, 10);
+    @include sp-only {
+    }
+    .num {
+      position: relative;
+      @include font-vw(36, 30);
+      @include margin-right-vw(15, 15);
+      @include padding-right-vw(15, 15);
+      @include sp-only {
+      }
+      &::after {
+        content: "";
+        display: block;
+        position: absolute;
+        right: 0;
+        background-color: $color-black;
+        @include top-vw(14, 10);
+        @include width-vw(1, 1);
+        @include height-vw(35, 35);
+        @include sp-only {
+        }
+      }
+    }
+    .title {
+      font-weight: $font-weight-bold;
+      @include font-vw(28, 22);
+      @include padding-top-vw(8, 8);
+      @include sp-only {
+      }
+    }
+  }
+  &__text02 {
+    letter-spacing: $letter-spacing-1;
+    line-height: 2.5;
+    @include margin-bottom-vw(30, 15);
+    @include font-vw(14, 14);
+    @include sp-only {
+      letter-spacing: 0;
+    }
+  }
+  &__text03 {
+    letter-spacing: $letter-spacing-1;
+    font-weight: $font-weight-medium;
+    color: $color-white;
+    background-color: $color-black;
+    display: inline-block;
+    @include border-radius-vw(3, 3);
+    @include padding-vw(3, 5, 1, 10, 10, 10, 6, 10);
+    @include font-vw(13, 12);
+    @include sp-only {
+      line-height: 1.6;
+    }
+  }
+}
+
+.p-home-news {
+  @include border-bottom-vw(1, 1, solid, $color-black);
+  @include padding-top-vw(100, 50);
+  @include padding-bottom-vw(100, 50);
+  @include sp-only {
+    @include padding-left-vw(0, 20);
+    @include padding-right-vw(0, 20);
+  }
+}
+
+.l-news {
+  &__item {
+    a {
+      display: block;
+      position: relative;
+      @include padding-vw(40, 60, 40, 50, 20, 50, 20, 20);
+      @include border-bottom-vw(1, 1, solid, $color-black-alpha-25);
+      @include sp-only {
+      }
+      &::after {
+        content: "";
+        display: block;
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        margin: auto;
+        background: url(/assets/images/common/arrow02-right-black.svg) no-repeat
+          center / cover;
+        transition: $transition;
+        @include width-vw(30, 25);
+        @include height-vw(30, 25);
+        @include right-vw(20, 15);
+        @include sp-only {
+        }
+      }
+      &:hover {
+        &::after {
+          @include pc-only {
+            @include translateX-vw(6);
+          }
+        }
+      }
+    }
+  }
+  &__date {
+    letter-spacing: $letter-spacing-1;
+    display: inline-block;
+    @include font-vw(16, 14);
+    @include margin-right-vw(60, 0);
+    @include sp-only {
+      display: block;
+    }
+  }
+  &__text {
+    display: inline-block;
+    @include font-vw(16, 14);
+    @include sp-only {
+      display: block;
+    }
+  }
+  li {
+    + li {
+    }
+  }
+}
+
+.p-home-faq {
+  @include border-bottom-vw(1, 1, solid, $color-black);
+  @include padding-top-vw(100, 50);
+  @include padding-bottom-vw(100, 50);
+  @include sp-only {
+    @include padding-left-vw(0, 20);
+    @include padding-right-vw(0, 20);
+  }
+  .l-inner {
+  }
+}
+
+.l-faq {
+  &__item {
+    position: relative;
+    cursor: pointer;
+    transition: $transition;
+    @include padding-vw(25, 60, 25, 50, 25, 60, 25, 50);
+    @include border-bottom-vw(1, 1, solid, $color-black-alpha-25);
+    @include sp-only {
+    }
+    &::after {
+      content: "";
+      display: block;
+      position: absolute;
+      right: 0;
+      background: url(/assets/images/common/arrow03-bottom-black.svg) no-repeat
+        center / cover;
+      transition: $transition;
+      @include width-vw(30, 30);
+      @include height-vw(30, 30);
+      @include right-vw(20, 20);
+      @include top-vw(50, 50);
+      @include sp-only {
+      }
+    }
+    &.is-active {
+      &::after {
+        transform: rotate(180deg);
+      }
+    }
+    &:hover {
+      @include pc-only {
+        opacity: 0.7;
+      }
+    }
+  }
+  &__q {
+    display: flex;
+    @include sp-only {
+    }
+  }
+  &__a {
+    display: flex;
+    height: 0;
+    opacity: 0;
+    overflow: hidden;
+    transition: $transition;
+    @include padding-top-vw(15, 15);
+    @include sp-only {
+    }
+  }
+  &__inicial {
+    @include font-vw(38, 30);
+    @include margin-right-vw(40, 40);
+    @include sp-only {
+    }
+  }
+  &__text {
+    line-height: 2;
+    @include font-vw(16, 16);
+    @include padding-top-vw(23, 20);
+    @include sp-only {
+    }
+  }
+}
+
+.p-home-instagram {
+  @include padding-top-vw(100, 50);
+  @include padding-bottom-vw(100, 50);
+  @include sp-only {
+    @include padding-left-vw(0, 20);
+    @include padding-right-vw(0, 20);
+  }
+}
+
+.l-footer {
+  @include padding-top-vw(40, 30);
+  @include padding-bottom-vw(40, 30);
+  @include sp-only {
+    @include padding-left-vw(0, 20);
+    @include padding-right-vw(0, 20);
+  }
+  &__logo {
+    margin-left: auto;
+    margin-right: auto;
+    @include margin-bottom-vw(50, 30);
+    @include sp-only {
+    }
+    a {
+      display: block;
+      @include sp-only {
+      }
+    }
+  }
+  &__nav {
+  }
+  &__nav-top {
+    display: flex;
+    @include padding-left-vw(20, 10);
+    @include sp-only {
+      flex-wrap: wrap;
+    @include padding-right-vw(0, 10);
+    }
+  }
+  &__nav-top-item {
+    @include sp-only {
+      width: 50%;
+    }
+    a {
+      color: $color-white;
+      display: block;
+      @include font-vw(13, 13);
+      @include sp-only {
+          line-height: 1.4;
+      }
+    }
+    + .l-footer__nav-top-item {
+      @include margin-left-vw(40, 0);
+      @include sp-only {
+      }
+    }
+    &:nth-child(n + 3) {
+      @include sp-only {
+        @include margin-top-vw(0, 10);
+      }
+    }
+  }
+
+  &__nav-border {
+    background-color: $color-white;
+    @include margin-top-vw(25, 25);
+    @include margin-bottom-vw(25, 25);
+    @include height-vw(1, 1);
+    @include sp-only {
+    }
+  }
+
+  &__nav-bottom {
+    position: relative;
+    display: flex;
+    @include padding-left-vw(20, 10);
+    @include sp-only {
+      flex-wrap: wrap;
+          @include padding-right-vw(0, 10);
+    }
+  }
+
+  &__nav-bottom-item {
+    @include sp-only {
+      width: 50%;
+    }
+    a {
+      color: $color-white;
+      @include font-vw(13, 13);
+      @include sp-only {
+        line-height: 1.4;
+      }
+    }
+    + .l-footer__nav-bottom-item {
+      @include margin-left-vw(40, 0);
+      @include sp-only {
+      }
+    }
+    &:nth-child(n + 3) {
+      @include sp-only {
+        @include margin-top-vw(0, 10);
+      }
+    }
+  }
+
+  &__nav-instagram {
+    position: absolute;
+    @include right-vw(20);
+    @include top-vw(2);
+    @include sp-only {
+      position: static;
+      @include margin-top-vw(0,12);
+    }
+    a {
+      display: block;
+    }
+  }
+}

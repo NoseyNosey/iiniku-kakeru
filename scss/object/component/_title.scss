@@ -1,25 +1,175 @@
-@use '../../foundations/variables'as *;
-@use '../../foundations/mixins'as *;
+@use "../../foundations/variables" as *;
+@use "../../foundations/mixins" as *;
 
-.c-section-title {
+.c-title01 {
+  color: $color-black;
+  text-align: center;
+  @include margin-bottom-vw(40, 20);
+  @include sp-only {
+    text-align: left;
+  }
+  .en {
+    display: block;
+    font-weight: $font-weight-medium;
+    @include font-vw(14, 14);
+    @include margin-bottom-vw(10, 10);
+    @include sp-only {
+    }
+  }
+
+  .jp {
+    display: block;
     font-weight: $font-weight-bold;
-    @include gradient-text;
-
-    &__en {
-        display: block;
-        line-height: 1.1;
-        @include font-vw(60, 40);
-                @include margin-bottom-vw(0,5);
-        @include sp-only {
-
-        }
+    line-height: 1.6;
+    @include font-vw(40, 30);
+    @include sp-only {
     }
+  }
+}
 
-    &__ja {
-        display: block;
-        @include font-vw(16, 14);
-                @include sp-only {
-            
-        }
+.c-title02 {
+  display: inline-block;
+  @include border-bottom-vw(1, 1, solid, $color-black);
+  @include margin-bottom-vw(50, 30);
+  @include sp-only {
+  }
+  .en {
+    display: block;
+    font-weight: $font-weight-medium;
+    line-height: 1;
+    @include padding-left-vw(13, 13);
+    @include font-vw(14, 14);
+    @include margin-bottom-vw(5, 5);
+    @include sp-only {
     }
+  }
+  .jp {
+    display: block;
+    font-weight: $font-weight-bold;
+    line-height: 1.4;
+    @include padding-left-vw(10, 10);
+    @include padding-right-vw(10, 10);
+    @include padding-bottom-vw(5, 5);
+    @include font-vw(34, 26);
+    @include sp-only {
+    }
+  }
+
+  .en-insta-01 {
+    display: block;
+    font-weight: $font-weight-medium;
+    line-height: 1;
+    @include font-vw(36, 26);
+    @include margin-bottom-vw(8, 8);
+    @include padding-left-vw(10, 10);
+    @include sp-only {
+    }
+  }
+  .en-insta-02 {
+    display: block;
+    font-weight: $font-weight-medium;
+    line-height: 1;
+    @include font-vw(14, 14);
+    @include padding-bottom-vw(10, 10);
+    @include padding-left-vw(10, 10);
+    @include padding-right-vw(10, 10);
+    @include sp-only {
+    }
+  }
+}
+
+.c-title03 {
+  display: inline-block;
+  font-weight: $font-weight-bold;
+  line-height: 1.6;
+  @include padding-left-vw(10, 10);
+  @include padding-right-vw(10, 10);
+  @include font-vw(26, 20);
+  @include border-bottom-vw(1, 1, solid, $color-black);
+  @include margin-bottom-vw(40, 20);
+  @include sp-only {
+  }
+}
+
+.c-title04 {
+  color: $color-black;
+  text-align: center;
+  @include margin-bottom-vw(40, 20);
+  @include sp-only {
+      text-align: left;
+  }
+  .en {
+    display: block;
+    font-weight: $font-weight-medium;
+    @include font-vw(14, 14);
+    @include margin-bottom-vw(10, 0);
+    @include sp-only {
+    }
+  }
+
+  .jp {
+    display: block;
+    font-weight: $font-weight-bold;
+    line-height: 1.6;
+    @include font-vw(40, 30);
+    @include sp-only {
+    
+    }
+  }
+
+  .sub {
+    font-weight: $font-weight-medium;
+    position: relative;
+    display: inline-block;
+    @include font-vw(18, 14);
+    @include padding-left-vw(15, 0);
+    @include padding-right-vw(15, 15);
+    @include sp-only {
+    }
+    &::before {
+      content: "";
+      display: block;
+      position: absolute;
+      right: 100%;
+      bottom: 0;
+      background-color: $color-black;
+      @include top-vw(17, 17);
+      @include height-vw(1, 1);
+      @include width-vw(115, 115);
+      @include sp-only {
+        display: none;
+      }
+    }
+    &::after {
+      content: "";
+      display: block;
+      position: absolute;
+      left: 100%;
+      bottom: 0;
+      background-color: $color-black;
+      @include top-vw(17, 13);
+      @include height-vw(1, 1);
+      @include width-vw(115, 50);
+      @include sp-only {
+      }
+    }
+  }
+}
+
+.c-description01 {
+  color: $color-black;
+  line-height: 2.5;
+  @include font-vw(16, 14);
+  @include sp-only {
+    text-align: left;
+  }
+  span {
+    font-weight: $font-weight-medium;
+    text-decoration: underline;
+    text-underline-offset: 0.3em;
+    text-decoration-thickness: 0.03em;
+    @include font-vw(26, 18);
+    @include sp-only {
+    }
+  }
 }

@@ -1,11 +1,11 @@
 <svg width="30" height="30" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
-<rect x="7" y="7" width="3" height="3" fill="#08071A"/>
-<rect x="13" y="7" width="3" height="3" fill="#08071A"/>
-<rect x="19" y="7" width="3" height="3" fill="#08071A"/>
-<rect x="7" y="12.5234" width="3" height="3" fill="#08071A"/>
-<rect x="13" y="12.5273" width="3" height="3" fill="#08071A"/>
-<rect x="19" y="12.5273" width="3" height="3" fill="#08071A"/>
-<rect x="7" y="19" width="3.0001" height="3.0001" fill="#08071A"/>
-<rect x="13" y="19" width="3.0001" height="3.0001" fill="#08071A"/>
-<rect x="19" y="19" width="3.0001" height="3.0001" fill="#08071A"/>
+<path d="M10 7H7V10H10V7Z" fill="#2C2C2C"/>
+<path d="M16 7H13V10H16V7Z" fill="#2C2C2C"/>
+<path d="M22 7H19V10H22V7Z" fill="#2C2C2C"/>
+<path d="M10 12.5234H7V15.5234H10V12.5234Z" fill="#2C2C2C"/>
+<path d="M16 12.5273H13V15.5273H16V12.5273Z" fill="#2C2C2C"/>
+<path d="M22 12.5273H19V15.5273H22V12.5273Z" fill="#2C2C2C"/>
+<path d="M10.0001 19H7V22.0001H10.0001V19Z" fill="#2C2C2C"/>
+<path d="M16.0001 19H13V22.0001H16.0001V19Z" fill="#2C2C2C"/>
+<path d="M22.0001 19H19V22.0001H22.0001V19Z" fill="#2C2C2C"/>
 </svg>

@@ -5,9 +5,10 @@
    ========================================================================== */
 
 /* 基本のカラーパレット（色ベース） */
-$color-black: #100D3E;
+$color-black: #2C2C2C;
+$color-gray: #F3F3F3;
 $color-white: #fff;
-$color-blue: #100D3E;
+$color-red: #B22828;
 
 /* グラデーション */
 
@@ -18,7 +19,7 @@ $color-black-alpha-25: rgba($color-black, 0.25);
 $color-white-alpha-25: rgba($color-white, 0.25);
 
 /* 基本フォント */
-$font-primary: 'Shippori Mincho',
+$font-primary: 'Poppins','Zen Kaku Gothic New',
 serif;
 
 /* フォントウェイト */
@@ -50,7 +51,8 @@ $container-width-lg: 1200px;
 /* ボーダー */
 
 /* transition */
-$transition: .3s cubic-bezier(0.39, 0.575, 0.565, 1);
+$transition: .25s cubic-bezier(0.39, 0.575, 0.565, 1);
+
 
 /* ゼロを統一するためのユーティリティ */
 $zero: 0px;
