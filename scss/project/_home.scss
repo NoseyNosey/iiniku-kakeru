@@ -11,7 +11,7 @@ img {
 }
 
 .p-home-mv {
-  background: url(/assets/images/home/mv-bg.png) no-repeat center / cover;
+  background: url(../../assets/images/home/mv-bg.png) no-repeat center / cover;
 
   @include padding-top-vw(120, 100);
   @include padding-bottom-vw(80, 50);
@@ -19,7 +19,7 @@ img {
   @include sp-only {
     @include padding-left-vw(0, 20);
     @include padding-right-vw(0, 20);
-    background-image: url(/assets/images/home/mv-bg-sp.png);
+    background-image: url(../../assets/images/home/mv-bg-sp.png);
   }
 
   &__title {
@@ -502,7 +502,7 @@ img {
         top: 0;
         bottom: 0;
         margin: auto;
-        background: url(/assets/images/common/arrow02-right-black.svg) no-repeat
+        background: url(../../assets/images/common/arrow02-right-black.svg) no-repeat
           center / cover;
         transition: $transition;
         @include width-vw(30, 25);
@@ -568,7 +568,7 @@ img {
       display: block;
       position: absolute;
       right: 0;
-      background: url(/assets/images/common/arrow03-bottom-black.svg) no-repeat
+      background: url(../../assets/images/common/arrow03-bottom-black.svg) no-repeat
         center / cover;
       transition: $transition;
       @include width-vw(30, 30);
