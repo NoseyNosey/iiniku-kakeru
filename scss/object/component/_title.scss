@@ -1,18 +1,24 @@
 @use "../../foundations/variables" as *;
 @use "../../foundations/mixins" as *;
 
+// ==========================================================================
+// Common Title 01 (Center Aligned with EN/JP)
+// ==========================================================================
 .c-title01 {
   color: $color-black;
   text-align: center;
   @include margin-bottom-vw(40, 20);
+
   @include sp-only {
     text-align: left;
   }
+
   .en {
     display: block;
     font-weight: $font-weight-medium;
     @include font-vw(14, 14);
     @include margin-bottom-vw(10, 10);
+
     @include sp-only {
     }
   }
@@ -22,17 +28,23 @@
     font-weight: $font-weight-bold;
     line-height: 1.6;
     @include font-vw(40, 30);
+
     @include sp-only {
     }
   }
 }
 
+// ==========================================================================
+// Common Title 02 (Inline Block with Border Bottom & Insta variation)
+// ==========================================================================
 .c-title02 {
   display: inline-block;
   @include border-bottom-vw(1, 1, solid, $color-black);
   @include margin-bottom-vw(50, 30);
+
   @include sp-only {
   }
+
   .en {
     display: block;
     font-weight: $font-weight-medium;
@@ -40,9 +52,11 @@
     @include padding-left-vw(13, 13);
     @include font-vw(14, 14);
     @include margin-bottom-vw(5, 5);
+
     @include sp-only {
     }
   }
+
   .jp {
     display: block;
     font-weight: $font-weight-bold;
@@ -51,6 +65,7 @@
     @include padding-right-vw(10, 10);
     @include padding-bottom-vw(5, 5);
     @include font-vw(34, 26);
+
     @include sp-only {
     }
   }
@@ -62,9 +77,11 @@
     @include font-vw(36, 26);
     @include margin-bottom-vw(8, 8);
     @include padding-left-vw(10, 10);
+
     @include sp-only {
     }
   }
+
   .en-insta-02 {
     display: block;
     font-weight: $font-weight-medium;
@@ -73,11 +90,15 @@
     @include padding-bottom-vw(10, 10);
     @include padding-left-vw(10, 10);
     @include padding-right-vw(10, 10);
+
     @include sp-only {
     }
   }
 }
 
+// ==========================================================================
+// Common Title 03 (Simple Inline Block with Border Bottom)
+// ==========================================================================
 .c-title03 {
   display: inline-block;
   font-weight: $font-weight-bold;
@@ -87,22 +108,29 @@
   @include font-vw(26, 20);
   @include border-bottom-vw(1, 1, solid, $color-black);
   @include margin-bottom-vw(40, 20);
+
   @include sp-only {
   }
 }
 
+// ==========================================================================
+// Common Title 04 (Center Aligned with Decorative Sub-lines)
+// ==========================================================================
 .c-title04 {
   color: $color-black;
   text-align: center;
   @include margin-bottom-vw(40, 20);
+
   @include sp-only {
-      text-align: left;
+    text-align: left;
   }
+
   .en {
     display: block;
     font-weight: $font-weight-medium;
     @include font-vw(14, 14);
     @include margin-bottom-vw(10, 0);
+
     @include sp-only {
     }
   }
@@ -112,8 +140,8 @@
     font-weight: $font-weight-bold;
     line-height: 1.6;
     @include font-vw(40, 30);
+
     @include sp-only {
-    
     }
   }
 
@@ -124,8 +152,10 @@
     @include font-vw(18, 14);
     @include padding-left-vw(15, 0);
     @include padding-right-vw(15, 15);
+
     @include sp-only {
     }
+
     &::before {
       content: "";
       display: block;
@@ -136,10 +166,12 @@
       @include top-vw(17, 17);
       @include height-vw(1, 1);
       @include width-vw(115, 115);
+
       @include sp-only {
         display: none;
       }
     }
+
     &::after {
       content: "";
       display: block;
@@ -150,25 +182,32 @@
       @include top-vw(17, 13);
       @include height-vw(1, 1);
       @include width-vw(115, 50);
+
       @include sp-only {
       }
     }
   }
 }
 
+// ==========================================================================
+// Common Description 01 (Base Text Style)
+// ==========================================================================
 .c-description01 {
   color: $color-black;
   line-height: 2.5;
   @include font-vw(16, 14);
+
   @include sp-only {
     text-align: left;
   }
+
   span {
     font-weight: $font-weight-medium;
     text-decoration: underline;
     text-underline-offset: 0.3em;
     text-decoration-thickness: 0.03em;
     @include font-vw(26, 18);
+
     @include sp-only {
     }
   }

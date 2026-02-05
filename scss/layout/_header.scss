@@ -1,68 +1,82 @@
 @use "../foundations/variables" as *;
 @use "../foundations/mixins" as *;
 
+// ==========================================================================
+// Layout Header (.l-header)
+// ==========================================================================
+
 .l-header {
   position: fixed;
   left: 0;
   right: 0;
   z-index: 10;
   @include top-vw(35, 20);
+
   @include sp-only {
   }
+
   .l-inner {
     display: flex;
     justify-content: space-between;
+
     @include sp-only {
     }
   }
 
+  // ロゴエリア
   &__logo {
     position: relative;
     z-index: 3;
+
     @include sp-only {
-            display: flex;
+      display: flex;
       align-items: center;
-       @include margin-left-vw(0, 20);
+      @include margin-left-vw(0, 20);
     }
+
     a {
       display: block;
       @include width-vw(100, 100);
     }
   }
 
+  // メインナビゲーション（アイコンリスト）
   &__main-list {
     position: relative;
     display: flex;
     z-index: 3;
+
     @include sp-only {
       @include margin-right-vw(0, 20);
     }
   }
 
   &__main-item {
-    background-color: $color-white;
     transition: $transition;
     cursor: pointer;
-    @include border-vw(1, 1, solid, $color-black);
-    @include border-radius-vw(5, 5);
     @include width-vw(50, 50);
     @include height-vw(50, 50);
+
     @include sp-only {
     }
+
     a {
       display: flex;
       align-items: center;
       justify-content: center;
       width: 100%;
       height: 100%;
+
       @include sp-only {
       }
+
       img {
         @include width-vw(30, 30);
         @include sp-only {
         }
       }
     }
+
     + .l-header__main-item {
       @include margin-left-vw(15, 10);
       @include sp-only {
@@ -84,50 +98,58 @@
     }
   }
 
+  // ハンバーガーボタン外側
   &__menu {
     width: 100%;
     height: 100%;
     display: flex;
     align-items: center;
     justify-content: center;
+
     @include sp-only {
     }
   }
 
+  // ハンバーガーボタン内側（3本線）
   &__menu-inner {
     position: relative;
     @include width-vw(25, 25);
     @include height-vw(15, 15);
+
     @include sp-only {
     }
+
     div {
-      background-color: $color-black;
+      background-color: $color-white;
       position: absolute;
       width: 100%;
       transition: $transition;
       @include height-vw(1, 1);
+
       @include sp-only {
       }
+
       &:nth-child(1) {
         top: 0;
         @include sp-only {
-        
         }
       }
+
       &:nth-child(2) {
         top: 0;
         bottom: 0;
         margin: auto;
       }
+
       &:nth-child(3) {
         bottom: 0;
         @include sp-only {
-         
         }
       }
     }
   }
 
+  // 全画面展開メニュー
   &__open-menu {
     transition: $transition;
     opacity: 0;
@@ -142,6 +164,7 @@
     align-items: center;
     justify-content: center;
     flex-wrap: wrap;
+
     @include sp-only {
       @include padding-left-vw(0, 20);
       @include padding-right-vw(0, 20);
@@ -151,10 +174,12 @@
   &__open-menu-list {
     display: flex;
     justify-content: center;
+
     @include sp-only {
       flex-wrap: wrap;
       justify-content: flex-start;
     }
+
     &.--sm {
       scale: (0.9);
       @include sp-only {
@@ -165,6 +190,7 @@
         @include padding-left-vw(0, 12);
       }
     }
+
     &:first-child {
       @include margin-bottom-vw(50, 20);
     }
@@ -175,31 +201,38 @@
       width: 50%;
       @include margin-bottom-vw(0, 20);
     }
+
     a {
       color: $color-black;
       line-height: 1;
       display: inline-block;
       position: relative;
+
       @include sp-only {
       }
+
       .en {
         display: block;
         letter-spacing: $letter-spacing-1;
         font-weight: $font-weight-medium;
         @include margin-bottom-vw(10, 5);
         @include font-vw(10, 10);
+
         @include sp-only {
         }
       }
+
       .jp {
         display: block;
         font-weight: $font-weight-medium;
         @include font-vw(18, 18);
+
         @include sp-only {
           line-height: 1.4;
         }
       }
 
+      // ホバー時の下線アニメーション
       &::after {
         content: "";
         position: absolute;
@@ -211,6 +244,7 @@
         transition: $transition;
         @include bottom-vw(-5, -5);
         @include height-vw(1, 1);
+
         @include sp-only {
         }
       }
@@ -227,6 +261,7 @@
 
     + .l-header__open-menu-item {
       @include margin-left-vw(50, 0);
+
       @include sp-only {
       }
     }
@@ -241,6 +276,7 @@
   &__open-menu-border {
   }
 
+  // アクティブ状態（メニュー展開時）
   &.is-active {
     .l-header__menu-inner {
       div {
@@ -255,7 +291,7 @@
         }
         &:nth-child(3) {
           transform: rotate(-45deg);
-          @include bottom-vw(6,6);
+          @include bottom-vw(6, 6);
           @include sp-only {
           }
         }
@@ -268,6 +304,7 @@
   }
 }
 
+// 全画面オーバーレイ
 .overlay {
   transition: $transition;
   position: fixed;
@@ -279,6 +316,7 @@
   background-color: $color-white;
   opacity: 0;
   pointer-events: none;
+
   &.is-active {
     opacity: 1;
   }

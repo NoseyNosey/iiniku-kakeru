@@ -1,80 +1,121 @@
-@use '../foundations/variables'as *;
-@use '../foundations/mixins'as *;
+@use "../foundations/variables" as *;
+@use "../foundations/mixins" as *;
+
+// ==========================================================================
+// Footer
+// ==========================================================================
 
 .l-footer {
-    background: url(../../assets/images/common/bg-noise.png) repeat center / 10% 10% $color-black;
+  @include padding-top-vw(60, 30);
+  @include padding-bottom-vw(60, 30);
+  background-color: $color-black;
+  @include sp-only {
+    @include padding-left-vw(0, 20);
+    @include padding-right-vw(0, 20);
+  }
 
-    .l-inner {
-        @include padding-top-vw(30, 30);
-        @include padding-bottom-vw(20, 20);
-
-        @include sp-only {
-            @include padding-left-vw(0, 20);
-            @include padding-right-vw(0, 20);
-        }
+  &__logo {
+    margin-left: auto;
+    margin-right: auto;
+     @include width-vw(120,120);
+    @include margin-bottom-vw(50, 30);
+    @include sp-only {
     }
-
-    &__logo {
-        display: block;
-        @include width-vw(95, 95);
-        @include margin-bottom-vw(25, 20);
-
-        @include sp-only {}
+    a {
+      display: block;
+      @include sp-only {
+      }
     }
+  }
 
-    &__nav {
+  &__nav {
+  }
 
-        &.--primary {
-            @include margin-bottom-vw(10, 0);
-
-            @include sp-only {}
-        }
-
-        &.--secondary {
-            @include margin-bottom-vw(20, 0);
-
-            @include sp-only {}
-        }
+  &__nav-top {
+    display: flex;
+    @include padding-left-vw(20, 10);
+    @include sp-only {
+      flex-wrap: wrap;
+      @include padding-right-vw(0, 10);
     }
+  }
 
-    &__list {
-        display: flex;
-        justify-content: center;
-
-        @include sp-only {
-            flex-wrap: wrap;
-        }
-
-        &.--sub {}
+  &__nav-top-item {
+    @include sp-only {
+      width: 50%;
     }
-
-    &__item {
-        color: $color-white;
-        font-weight: $font-weight-regular;
-        @include font-vw(14, 12);
-
-        @include sp-only {
-            @include margin-left-vw(0, 10);
-            @include margin-right-vw(0, 10);
-            @include margin-bottom-vw(0, 10);
-        }
-
-        +.l-footer__item {
-            @include margin-left-vw(40, 0);
-
-            @include sp-only {}
-        }
-
-        a {
-
-        }
+    a {
+      color: $color-white;
+      display: block;
+      @include font-vw(13, 13);
+      @include sp-only {
+        line-height: 1.4;
+      }
     }
-
-    &__copy {
-        color: $color-white;
-        font-weight: $font-weight-regular;
-        @include font-vw(10, 10);
-
-        @include sp-only {}
+    + .l-footer__nav-top-item {
+      @include margin-left-vw(40, 0);
+      @include sp-only {
+      }
     }
+    &:nth-child(n + 3) {
+      @include sp-only {
+        @include margin-top-vw(0, 10);
+      }
+    }
+  }
+
+  &__nav-border {
+    background-color: $color-white;
+    @include margin-top-vw(25, 25);
+    @include margin-bottom-vw(25, 25);
+    @include height-vw(1, 1);
+    @include sp-only {
+    }
+  }
+
+  &__nav-bottom {
+    position: relative;
+    display: flex;
+    @include padding-left-vw(20, 10);
+    @include sp-only {
+      flex-wrap: wrap;
+      @include padding-right-vw(0, 10);
+    }
+  }
+
+  &__nav-bottom-item {
+    @include sp-only {
+      width: 50%;
+    }
+    a {
+      color: $color-white;
+      @include font-vw(13, 13);
+      @include sp-only {
+        line-height: 1.4;
+      }
+    }
+    + .l-footer__nav-bottom-item {
+      @include margin-left-vw(40, 0);
+      @include sp-only {
+      }
+    }
+    &:nth-child(n + 3) {
+      @include sp-only {
+        @include margin-top-vw(0, 10);
+      }
+    }
+  }
+
+  &__nav-instagram {
+    position: absolute;
+    @include right-vw(20);
+    @include top-vw(2);
+    @include sp-only {
+      position: static;
+      @include margin-top-vw(0, 12);
+    }
+    a {
+      display: block;
+    }
+  }
 }
