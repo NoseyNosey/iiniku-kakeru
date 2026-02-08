@@ -11,6 +11,10 @@
 @use "layout/header";
 @use "layout/inner";
 @use "layout/footer";
+@use "layout/num";
+@use "layout/news";
+@use "layout/faq";
+@use "layout/product";
 
 // object (Component, Project, Utility)
 @use "object/component/title";

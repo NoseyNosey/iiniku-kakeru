@@ -1,0 +1,76 @@
+@use "../foundations/variables" as *;
+@use "../foundations/mixins" as *;
+
+// ==========================================================================
+// News Section
+// ==========================================================================
+
+.p-home-news {
+  @include padding-top-vw(100, 50);
+  @include padding-bottom-vw(100, 50);
+  @include sp-only {
+    @include padding-left-vw(0, 20);
+    @include padding-right-vw(0, 20);
+  }
+}
+
+.l-news {
+  &__item {
+    a {
+      display: block;
+      position: relative;
+      @include padding-vw(40, 60, 40, 50, 20, 50, 20, 20);
+      @include border-bottom-vw(1, 1, solid, $color-black-alpha-25);
+      @include sp-only {
+      }
+
+      &::after {
+        content: "";
+        display: block;
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        margin: auto;
+        background: url(../../assets/images/common/arrow02-right-black.svg)
+          no-repeat center / cover;
+        transition: $transition;
+        @include width-vw(30, 25);
+        @include height-vw(30, 25);
+        @include right-vw(20, 15);
+        @include sp-only {
+        }
+      }
+
+      &:hover {
+        &::after {
+          @include pc-only {
+            @include translateX-vw(6);
+          }
+        }
+      }
+    }
+  }
+
+  &__date {
+    letter-spacing: $letter-spacing-1;
+    display: inline-block;
+    @include font-vw(16, 14);
+    @include margin-right-vw(60, 0);
+    @include sp-only {
+      display: block;
+    }
+  }
+
+  &__text {
+    display: inline-block;
+    @include font-vw(16, 14);
+    @include sp-only {
+      display: block;
+    }
+  }
+
+  li {
+    + li {
+    }
+  }
+}

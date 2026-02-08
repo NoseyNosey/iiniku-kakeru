@@ -1,29 +1,50 @@
-@use '../../foundations/variables'as *;
-@use '../../foundations/mixins'as *;
+@use '../../foundations/variables' as *;
+@use '../../foundations/mixins' as *;
 
+/* ==========================================================================
+   Utility - Display / Responsive
+   ========================================================================== */
+
+/* SP only */
 .u-sp-only {
   display: none;
+
   @include sp-only {
     display: block;
   }
 }
+
 .u-sp-only-ib {
   display: none;
+
   @include sp-only {
     display: inline-block;
   }
 }
+
+/* PC only */
 .u-pc-only {
   display: none;
+
   @include pc-only {
     display: block;
   }
 }
+
 .u-pc-only-ib {
   display: none;
+
   @include pc-only {
     display: inline-block;
   }
+}
+
+/* ==========================================================================
+   Utility - Flex
+   ========================================================================== */
+
+.u-flex {
+  display: flex;
 }
 
 .u-flex-justify-center {
@@ -47,16 +68,24 @@
   justify-content: center;
 }
 
-.u-bold {
-  font-weight: $font-weight-bold;
-}
+/* ==========================================================================
+   Utility - Text
+   ========================================================================== */
 
 .u-text-center {
   text-align: center;
 }
 
+.u-bold {
+  font-weight: $font-weight-bold;
+}
+
+/* ==========================================================================
+   Utility - Spacing
+   ========================================================================== */
+
 .u-pc-pl-0 {
   @include pc-only {
-      padding-left: 0;
+    padding-left: 0;
   }
 }

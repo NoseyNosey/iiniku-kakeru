@@ -1,5 +1,9 @@
-@use '../../foundations/variables'as *;
-@use '../../foundations/mixins'as *;
+@use '../../foundations/variables' as *;
+@use '../../foundations/mixins' as *;
+
+/* ==========================================================================
+   Utility - Text Align
+   ========================================================================== */
 
 .u-text-center {
   text-align: center;

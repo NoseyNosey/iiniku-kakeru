@@ -1,29 +1,35 @@
-@use '../foundations/variables'as *;
-@use '../foundations/mixins'as *;
+@use '../foundations/variables' as *;
+@use '../foundations/mixins' as *;
+
+/* ==========================================================================
+   Layout - Inner
+   ========================================================================== */
 
 .l-inner {
-  margin: auto;
+  margin-inline: auto;
   position: relative;
 
+  /* small */
   &.--sm {
     @include pc-only {
-      @include width-vw(800);
-    }
-    @include sp-only {
+      @include padding-left-vw(240, 20);
+      @include padding-right-vw(240, 20);
     }
   }
 
+  /* medium */
   &.--md {
     @include pc-only {
-      @include width-vw(1000);
+      @include padding-left-vw(156, 20);
+      @include padding-right-vw(156, 20);
     }
-    @include sp-only {}
   }
 
+  /* large */
   &.--lg {
     @include pc-only {
-      @include width-vw(1200);
+      @include padding-left-vw(40, 20);
+      @include padding-right-vw(40, 20);
     }
-    @include sp-only {}
   }
 }

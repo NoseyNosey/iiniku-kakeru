@@ -17,7 +17,7 @@ body {
   vertical-align: baseline;
   line-height: 1.8;
   color: $color-black;
-  letter-spacing: 0.5em;
+  letter-spacing: 0.4em;
   font-weight: $font-weight-regular;
   font-family: $font-primary;
   -webkit-text-size-adjust: 100%;
@@ -236,4 +236,8 @@ textarea::placeholder {
   ¥hidden 属性を適切に処理 */
 [hidden] {
   display: none;
+}
+
+main {
+  overflow-x: hidden;
 }

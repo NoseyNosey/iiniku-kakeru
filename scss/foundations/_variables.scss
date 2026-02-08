@@ -6,7 +6,7 @@
 
 /* 基本のカラーパレット（色ベース） */
 $color-black: #2C2C2C;
-$color-gray: #F3F3F3;
+$color-gray: #F7F7F7;
 $color-white: #fff;
 $color-red: #B22828;
 
@@ -19,11 +19,10 @@ $color-black-alpha-25: rgba($color-black, 0.25);
 $color-white-alpha-25: rgba($color-white, 0.25);
 
 /* 基本フォント */
-$font-primary: 'Poppins','Zen Kaku Gothic New',
+$font-primary: 'Zen Old Mincho',
 serif;
 
 /* フォントウェイト */
-$font-weight-light: 300;
 $font-weight-regular: 400;
 $font-weight-medium: 500;
 $font-weight-bold: 600;
@@ -43,7 +42,7 @@ $breakpoints: ('sp': 768px,
 
 /* コンテナの最大幅 */
 $container-width-sp: 375px;
-$container-width-pc: 1440px;
+$container-width-pc: 1512px;
 $container-width-sm: 800px;
 $container-width-md: 1000px;
 $container-width-lg: 1200px;

@@ -15,9 +15,8 @@
 
   .en {
     display: block;
-    font-weight: $font-weight-medium;
+    font-weight: $font-weight-regular;
     @include font-vw(14, 14);
-    @include margin-bottom-vw(10, 10);
 
     @include sp-only {
     }
@@ -25,12 +24,16 @@
 
   .jp {
     display: block;
-    font-weight: $font-weight-bold;
+    font-weight: $font-weight-regular;
     line-height: 1.6;
-    @include font-vw(40, 30);
+    @include font-vw(34, 30);
 
     @include sp-only {
     }
+  }
+
+  &.--white {
+    color: $color-white;
   }
 }
 
@@ -39,7 +42,6 @@
 // ==========================================================================
 .c-title02 {
   display: inline-block;
-  @include border-bottom-vw(1, 1, solid, $color-black);
   @include margin-bottom-vw(50, 30);
 
   @include sp-only {
@@ -47,7 +49,7 @@
 
   .en {
     display: block;
-    font-weight: $font-weight-medium;
+    font-weight: $font-weight-regular;
     line-height: 1;
     @include padding-left-vw(13, 13);
     @include font-vw(14, 14);
@@ -59,7 +61,7 @@
 
   .jp {
     display: block;
-    font-weight: $font-weight-bold;
+    font-weight: $font-weight-regular;
     line-height: 1.4;
     @include padding-left-vw(10, 10);
     @include padding-right-vw(10, 10);
@@ -94,6 +96,10 @@
     @include sp-only {
     }
   }
+
+  &.--white {
+    color: $color-white;
+  }
 }
 
 // ==========================================================================
@@ -101,11 +107,11 @@
 // ==========================================================================
 .c-title03 {
   display: inline-block;
-  font-weight: $font-weight-bold;
+  font-weight: $font-weight-medium;
   line-height: 1.6;
   @include padding-left-vw(10, 10);
   @include padding-right-vw(10, 10);
-  @include font-vw(26, 20);
+  @include font-vw(20, 20);
   @include border-bottom-vw(1, 1, solid, $color-black);
   @include margin-bottom-vw(40, 20);
 
@@ -187,6 +193,10 @@
       }
     }
   }
+
+  &.--white {
+    color: $color-white;
+  }
 }
 
 // ==========================================================================
@@ -202,7 +212,7 @@
   }
 
   span {
-    font-weight: $font-weight-medium;
+    font-weight: $font-weight-regular;
     text-decoration: underline;
     text-underline-offset: 0.3em;
     text-decoration-thickness: 0.03em;
@@ -210,5 +220,9 @@
 
     @include sp-only {
     }
+  }
+
+  &.--white {
+    color: $color-white;
   }
 }

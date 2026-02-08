@@ -4,17 +4,56 @@
 // ==========================================================================
 // Main Visual (.p-home-mv)
 // ==========================================================================
-
-
+.p-home-mv {
+  display: flex;
+  justify-content: space-between;
+  @include height-vw(700, 700);
+  &__left {
+    width: 33.33333%;
+    background: url(../../assets/images/home/mv-left-image.png) center / cover;
+  }
+  &__center {
+    width: 33.33333%;
+  }
+  &__center-image {
+    margin-left: auto;
+    margin-right: auto;
+    @include width-vw(305, 305);
+    @include margin-top-vw(50, 50);
+    @include margin-bottom-vw(20, 20);
+  }
+  &__center-text01 {
+    text-align: center;
+    color: $color-black;
+    font-weight: $font-weight-medium;
+    line-height: 2.2;
+    @include margin-bottom-vw(20, 20);
+    @include font-vw(14, 14);
+    span {
+      @include font-vw(22);
+    }
+  }
+  &__center-text02 {
+    margin-left: auto;
+    margin-right: auto;
+    @include margin-bottom-vw(45, 45);
+    @include width-vw(400, 400);
+  }
+  &__right {
+    width: 33.33333%;
+    background: url(../../assets/images/home/mv-right-image.png) center / cover;
+  }
+}
 
 // ==========================================================================
 // About Us Section
 // ==========================================================================
 
 .p-home-aboutus {
-  @include border-bottom-vw(1, 1, solid, $color-black);
-  @include padding-top-vw(100, 50);
-  @include padding-bottom-vw(100, 50);
+  background: url(../../assets/images/home/about-us-bg.png) no-repeat center /
+    cover;
+  @include padding-top-vw(120, 60);
+  @include padding-bottom-vw(120, 60);
   @include sp-only {
     @include padding-left-vw(0, 20);
     @include padding-right-vw(0, 20);
@@ -33,9 +72,8 @@
 // ==========================================================================
 
 .p-home-ranking {
-  @include border-bottom-vw(1, 1, solid, $color-black);
-  @include padding-top-vw(100, 50);
-  @include padding-bottom-vw(100, 50);
+  @include padding-top-vw(120, 60);
+  @include padding-bottom-vw(120, 60);
   @include sp-only {
     @include padding-left-vw(0, 20);
     @include padding-right-vw(0, 20);
@@ -61,84 +99,6 @@
 }
 
 // ==========================================================================
-// Product List Component
-// ==========================================================================
-
-.l-products-list {
-  display: flex;
-  justify-content: space-between;
-  @include sp-only {
-  }
-
-  &__item {
-    @include width-vw(360, 360);
-    @include sp-only {
-    }
-    a {
-      display: block;
-    }
-  }
-
-  &__img {
-    position: relative;
-    &::after {
-      content: "";
-      display: block;
-      position: absolute;
-      width: 100%;
-      height: 100%;
-      z-index: 1;
-      background-color: $color-white;
-      @include border-radius-vw(16, 16);
-      @include bottom-vw(-10, -10);
-      @include right-vw(-10, -10);
-      @include border-vw(1, 1, solid, $color-black);
-      @include sp-only {
-      }
-    }
-    img {
-      overflow: hidden;
-      position: relative;
-      z-index: 2;
-      @include border-vw(1, 1, solid, $color-black);
-      @include border-radius-vw(16, 16);
-      @include sp-only {
-      }
-    }
-  }
-
-  &__text01 {
-    font-weight: $font-weight-medium;
-    @include font-vw(16, 16);
-    @include margin-top-vw(25, 25);
-    @include sp-only {
-    }
-  }
-
-  &__text02 {
-    @include font-vw(14, 14);
-    @include margin-bottom-vw(15, 15);
-    @include sp-only {
-    }
-  }
-
-  &__text03 {
-    line-height: 2.2;
-    @include font-vw(14, 14);
-    @include sp-only {
-    }
-  }
-
-  &.--slider {
-    .l-products-list__item {
-      @include width-vw(400, 400);
-      @include sp-only {
-      }
-    }
-  }
-}
-
-// ==========================================================================
 // Swiper Custom
 // ==========================================================================
 
@@ -155,7 +115,9 @@
 
 /* 全スライド共通（基準） */
 .js-swiper.center-active .swiper-slide {
-  transition: transform 0.4s ease, opacity 0.4s ease;
+  transition:
+    transform 0.4s ease,
+    opacity 0.4s ease;
   transform: scale(0.95);
   opacity: 0.7;
 }
@@ -193,9 +155,8 @@
 // ==========================================================================
 
 .p-home-products {
-  @include border-bottom-vw(1, 1, solid, $color-black);
-  @include padding-top-vw(100, 50);
-  @include padding-bottom-vw(100, 50);
+  @include padding-top-vw(120, 60);
+  @include padding-bottom-vw(120, 60);
   @include sp-only {
     @include padding-left-vw(0, 20);
     @include padding-right-vw(0, 20);
@@ -203,14 +164,14 @@
 
   &__block {
     + .p-home-products__block {
-      @include margin-top-vw(80, 50);
+      @include margin-top-vw(60, 50);
       @include sp-only {
       }
     }
   }
 
   .c-button01 {
-    @include margin-top-vw(20, 20);
+    @include margin-top-vw(40, 30);
     @include sp-only {
     }
   }
@@ -238,9 +199,10 @@
 // ==========================================================================
 
 .p-home-gift {
-  @include border-bottom-vw(1, 1, solid, $color-black);
-  @include padding-top-vw(100, 50);
-  @include padding-bottom-vw(100, 50);
+  background: url(../../assets/images/home/gift-bg.png) no-repeat center /
+    cover;
+  @include padding-top-vw(120, 60);
+  @include padding-bottom-vw(120, 60);
   @include sp-only {
     @include padding-left-vw(0, 20);
     @include padding-right-vw(0, 20);
@@ -262,262 +224,12 @@
 }
 
 // ==========================================================================
-// Numeric Info List (.l-num)
-// ==========================================================================
-
-.l-num {
-  position: relative;
-  @include sp-only {
-  }
-
-  &__item {
-    display: flex;
-    @include sp-only {
-      display: block;
-    }
-
-    &:nth-child(even) {
-      justify-content: flex-end;
-      @include sp-only {
-      }
-    }
-
-    + .l-num__item {
-      @include margin-top-vw(70, 50);
-      @include sp-only {
-      }
-    }
-  }
-
-  &__image {
-    position: relative;
-    @include width-vw(700);
-    @include sp-only {
-      width: 100%;
-    }
-
-    &::after {
-      content: "";
-      display: block;
-      position: absolute;
-      width: 100%;
-      height: 100%;
-      z-index: 1;
-      background-color: $color-white;
-      @include border-radius-vw(16, 16);
-      @include bottom-vw(-10, -10);
-      @include right-vw(-10, -10);
-      @include border-vw(1, 1, solid, $color-black);
-      @include sp-only {
-      }
-    }
-
-    img {
-      overflow: hidden;
-      position: relative;
-      z-index: 2;
-      @include border-vw(1, 1, solid, $color-black);
-      @include border-radius-vw(16, 16);
-      @include sp-only {
-      }
-    }
-
-    &.--left {
-      img {
-        border-top-left-radius: 0;
-        border-bottom-left-radius: 0;
-        @include sp-only {
-          @include left-vw(0, -21);
-        }
-      }
-      &::after {
-        border-top-left-radius: 0;
-        border-bottom-left-radius: 0;
-        @include sp-only {
-          @include left-vw(0, -30);
-        }
-      }
-    }
-
-    &.--right {
-      order: 2;
-      img {
-        border-top-right-radius: 0;
-        border-bottom-right-radius: 0;
-        @include sp-only {
-          @include right-vw(0, -21);
-        }
-      }
-      &::after {
-        border-top-right-radius: 0;
-        border-bottom-right-radius: 0;
-        @include sp-only {
-          @include right-vw(0, -30);
-        }
-      }
-    }
-  }
-
-  &__texts {
-    @include margin-top-vw(40, 30);
-    @include sp-only {
-    }
-    &.--left {
-      @include margin-left-vw(55, 0);
-      @include sp-only {
-      }
-    }
-    &.--right {
-      @include margin-right-vw(55, 0);
-      @include sp-only {
-      }
-    }
-  }
-
-  &__text01 {
-    display: flex;
-    @include margin-bottom-vw(10, 10);
-    @include sp-only {
-    }
-
-    .num {
-      position: relative;
-      @include font-vw(36, 30);
-      @include margin-right-vw(15, 15);
-      @include padding-right-vw(15, 15);
-      @include sp-only {
-      }
-      &::after {
-        content: "";
-        display: block;
-        position: absolute;
-        right: 0;
-        background-color: $color-black;
-        @include top-vw(14, 10);
-        @include width-vw(1, 1);
-        @include height-vw(35, 35);
-        @include sp-only {
-        }
-      }
-    }
-
-    .title {
-      font-weight: $font-weight-bold;
-      @include font-vw(28, 22);
-      @include padding-top-vw(8, 8);
-      @include sp-only {
-      }
-    }
-  }
-
-  &__text02 {
-    letter-spacing: $letter-spacing-1;
-    line-height: 2.5;
-    @include margin-bottom-vw(30, 15);
-    @include font-vw(14, 14);
-    @include sp-only {
-      letter-spacing: 0;
-    }
-  }
-
-  &__text03 {
-    letter-spacing: $letter-spacing-1;
-    font-weight: $font-weight-medium;
-    color: $color-white;
-    background-color: $color-black;
-    display: inline-block;
-    @include border-vw(1, 1, solid, $color-white);
-    @include border-radius-vw(3, 3);
-    @include padding-vw(3, 5, 1, 10, 10, 10, 6, 10);
-    @include font-vw(13, 12);
-    @include sp-only {
-      line-height: 1.6;
-    }
-  }
-}
-
-// ==========================================================================
-// News Section
-// ==========================================================================
-
-.p-home-news {
-  @include border-bottom-vw(1, 1, solid, $color-black);
-  @include padding-top-vw(100, 50);
-  @include padding-bottom-vw(100, 50);
-  @include sp-only {
-    @include padding-left-vw(0, 20);
-    @include padding-right-vw(0, 20);
-  }
-}
-
-.l-news {
-  &__item {
-    a {
-      display: block;
-      position: relative;
-      @include padding-vw(40, 60, 40, 50, 20, 50, 20, 20);
-      @include border-bottom-vw(1, 1, solid, $color-black-alpha-25);
-      @include sp-only {
-      }
-
-      &::after {
-        content: "";
-        display: block;
-        position: absolute;
-        top: 0;
-        bottom: 0;
-        margin: auto;
-        background: url(../../assets/images/common/arrow02-right-black.svg) no-repeat center / cover;
-        transition: $transition;
-        @include width-vw(30, 25);
-        @include height-vw(30, 25);
-        @include right-vw(20, 15);
-        @include sp-only {
-        }
-      }
-
-      &:hover {
-        &::after {
-          @include pc-only {
-            @include translateX-vw(6);
-          }
-        }
-      }
-    }
-  }
-
-  &__date {
-    letter-spacing: $letter-spacing-1;
-    display: inline-block;
-    @include font-vw(16, 14);
-    @include margin-right-vw(60, 0);
-    @include sp-only {
-      display: block;
-    }
-  }
-
-  &__text {
-    display: inline-block;
-    @include font-vw(16, 14);
-    @include sp-only {
-      display: block;
-    }
-  }
-
-  li {
-    + li {
-    }
-  }
-}
-
-// ==========================================================================
 // FAQ Section
 // ==========================================================================
 
 .p-home-faq {
-  @include border-bottom-vw(1, 1, solid, $color-black);
-  @include padding-top-vw(100, 50);
-  @include padding-bottom-vw(100, 50);
+  @include padding-top-vw(120, 60);
+  @include padding-bottom-vw(120, 60);
   @include sp-only {
     @include padding-left-vw(0, 20);
     @include padding-right-vw(0, 20);
@@ -526,84 +238,13 @@
   }
 }
 
-.l-faq {
-  &__item {
-    position: relative;
-    cursor: pointer;
-    transition: $transition;
-    @include padding-vw(25, 60, 25, 50, 25, 60, 25, 50);
-    @include border-bottom-vw(1, 1, solid, $color-black-alpha-25);
-    @include sp-only {
-    }
-
-    &::after {
-      content: "";
-      display: block;
-      position: absolute;
-      right: 0;
-      background: url(../../assets/images/common/arrow03-bottom-black.svg) no-repeat center / cover;
-      transition: $transition;
-      @include width-vw(30, 30);
-      @include height-vw(30, 30);
-      @include right-vw(20, 20);
-      @include top-vw(50, 50);
-      @include sp-only {
-      }
-    }
-
-    &.is-active {
-      &::after {
-        transform: rotate(180deg);
-      }
-    }
-
-    &:hover {
-      @include pc-only {
-        opacity: 0.7;
-      }
-    }
-  }
-
-  &__q {
-    display: flex;
-    @include sp-only {
-    }
-  }
-
-  &__a {
-    display: flex;
-    height: 0;
-    opacity: 0;
-    overflow: hidden;
-    transition: $transition;
-    @include padding-top-vw(15, 15);
-    @include sp-only {
-    }
-  }
-
-  &__inicial {
-    @include font-vw(38, 30);
-    @include margin-right-vw(40, 40);
-    @include sp-only {
-    }
-  }
-
-  &__text {
-    line-height: 2;
-    @include font-vw(16, 16);
-    @include padding-top-vw(23, 20);
-    @include sp-only {
-    }
-  }
-}
-
 // ==========================================================================
 // Instagram Section
 // ==========================================================================
 
 .p-home-instagram {
-  @include padding-top-vw(100, 50);
-  @include padding-bottom-vw(100, 50);
+  @include padding-top-vw(120, 60);
+  @include padding-bottom-vw(120, 60);
   @include sp-only {
     @include padding-left-vw(0, 20);
     @include padding-right-vw(0, 20);

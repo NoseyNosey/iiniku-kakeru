@@ -1,0 +1,63 @@
+@use "../foundations/variables" as *;
+@use "../foundations/mixins" as *;
+
+// ==========================================================================
+// Product List Component
+// ==========================================================================
+
+.l-products-list {
+  display: flex;
+  justify-content: space-between;
+  @include sp-only {
+  }
+
+  &__item {
+    @include width-vw(320, 320);
+    @include sp-only {
+    }
+    a {
+      display: block;
+    }
+  }
+
+  &__img {
+    position: relative;
+    img {
+      overflow: hidden;
+      position: relative;
+      z-index: 2;
+      @include sp-only {
+      }
+    }
+  }
+
+  &__text01 {
+    font-weight: $font-weight-medium;
+    @include font-vw(16, 16);
+    @include margin-top-vw(25, 25);
+    @include sp-only {
+    }
+  }
+
+  &__text02 {
+    @include font-vw(14, 14);
+    @include margin-bottom-vw(15, 15);
+    @include sp-only {
+    }
+  }
+
+  &__text03 {
+    line-height: 2.2;
+    @include font-vw(14, 14);
+    @include sp-only {
+    }
+  }
+
+  &.--slider {
+    .l-products-list__item {
+      @include width-vw(400, 400);
+      @include sp-only {
+      }
+    }
+  }
+}

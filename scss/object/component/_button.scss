@@ -11,12 +11,12 @@
     align-items: center;
     justify-content: center;
     color: $color-white;
-    font-weight: $font-weight-medium;
+    font-weight: $font-weight-regular;
     position: relative;
-    background-color: $color-black;
     overflow: hidden;
     transition: $transition;
-    @include border-radius-vw(4, 4);
+    background: url(../../assets/images/common/bg-noise.png) repeat center / 50%;
+    background-color: $color-black;
     @include border-vw(1, 1, solid, $color-black);
     @include font-vw(16, 16);
     @include width-vw(300, 300);
@@ -50,7 +50,8 @@
       top: 0;
       bottom: 0;
       margin: auto;
-      background: url(../../assets/images/common/arrow01-right-white.svg) no-repeat center / 100%;
+      background: url(../../assets/images/common/arrow01-right-white.svg)
+        no-repeat center / 100%;
       transition: $transition;
       @include width-vw(30, 30);
       @include height-vw(30, 30);
@@ -82,23 +83,25 @@
     }
   }
 
-  // ホワイトバリエーション
-  &.--white {
+  &.--red {
     a {
-      border-color: $color-white;
-      background-color: $color-white;
-      color: $color-black;
+      background: url(../../assets/images/common/bg-noise.png) repeat center /
+        50%;
+      border-color: $color-red;
+      background-color: $color-red;
+      color: $color-white;
 
       &::before {
-        background-color: $color-black;
+        background-color: $color-white;
       }
 
       &::after {
-        background-image: url(../../assets/images/common/arrow01-right-black.svg);
+        background-image: url(../../assets/images/common/arrow01-right-white.svg);
       }
 
       &:hover {
         @include pc-only {
+                border-color: $color-black;
           color: $color-white;
           background-color: $color-black;
         }
@@ -137,8 +140,9 @@
     align-items: center;
     justify-content: center;
     color: $color-white;
-    font-weight: $font-weight-medium;
+    font-weight: $font-weight-regular;
     position: relative;
+    background: url(../../assets/images/common/bg-noise.png) repeat center / 50%;
     background-color: $color-red;
     overflow: hidden;
     letter-spacing: -0.15em;
@@ -147,7 +151,7 @@
     text-orientation: mixed;
     border-top-right-radius: 0 !important;
     border-bottom-right-radius: 0 !important;
-    @include border-radius-vw(4, 4);
+
     @include border-vw(1, 1, solid, $color-red);
     @include font-vw(16, 12);
     @include width-vw(60, 45);
@@ -180,7 +184,8 @@
       left: 0;
       right: 0;
       margin: auto;
-      background: url(../../assets/images/common/icon-cart-white.svg) no-repeat center / 100%;
+      background: url(../../assets/images/common/icon-cart-white.svg) no-repeat
+        center / 100%;
       transition: $transition;
       @include bottom-vw(20, 15);
       @include width-vw(30, 25);
@@ -244,7 +249,7 @@
     a {
       position: relative;
       font-weight: $font-weight-medium;
-      @include padding-right-vw(25, 25);
+      @include padding-right-vw(35, 35);
       @include font-vw(12, 12);
 
       &::after {
@@ -255,9 +260,10 @@
         top: 0;
         bottom: 0;
         margin: auto;
-        background: url(../../assets/images/common/icon-list-black.svg) no-repeat center / 100%;
-        @include width-vw(24, 24);
-        @include height-vw(24, 24);
+        background: url(../../assets/images/common/icon-beaf-black.svg)
+          no-repeat center / 100%;
+        @include width-vw(30, 24);
+        @include height-vw(30, 24);
 
         @include sp-only {
         }

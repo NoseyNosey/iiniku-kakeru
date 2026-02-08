@@ -10,6 +10,11 @@
   left: 0;
   right: 0;
   z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  @include padding-left-vw(40);
+  @include padding-right-vw(40);
   @include top-vw(35, 20);
 
   @include sp-only {
@@ -36,7 +41,7 @@
 
     a {
       display: block;
-      @include width-vw(100, 100);
+      @include width-vw(178, 178);
     }
   }
 
@@ -78,7 +83,7 @@
     }
 
     + .l-header__main-item {
-      @include margin-left-vw(15, 10);
+      // @include margin-left-vw(15, 10);
       @include sp-only {
       }
     }
