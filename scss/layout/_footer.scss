@@ -6,9 +6,9 @@
 // ==========================================================================
 
 .l-footer {
-  @include padding-top-vw(60, 30);
-  @include padding-bottom-vw(60, 30);
-  background-color: $color-black;
+  @include padding-top-vw(80, 30);
+  @include padding-bottom-vw(80, 30);
+  background-color: $color-dark-black;
   @include sp-only {
     @include padding-left-vw(0, 20);
     @include padding-right-vw(0, 20);
@@ -17,7 +17,7 @@
   &__logo {
     margin-left: auto;
     margin-right: auto;
-     @include width-vw(120,120);
+     @include width-vw(175,175);
     @include margin-bottom-vw(50, 30);
     @include sp-only {
     }
@@ -29,6 +29,7 @@
   }
 
   &__nav {
+    @include margin-bottom-vw(60,30)
   }
 
   &__nav-top {
@@ -76,6 +77,7 @@
   &__nav-bottom {
     position: relative;
     display: flex;
+    opacity: 0.5;
     @include padding-left-vw(20, 10);
     @include sp-only {
       flex-wrap: wrap;
@@ -117,5 +119,12 @@
     a {
       display: block;
     }
+  }
+
+  &__copy {
+    color: $color-white;
+    text-align: center;
+    letter-spacing: $letter-spacing-2;
+    @include font-vw(11,10);
   }
 }

@@ -130,10 +130,15 @@
   position: fixed;
   right: 0;
   z-index: 3;
-  @include bottom-vw(50, 50);
+  opacity: 0;
+  pointer-events: none;
+  transition: $transition;
 
-  @include sp-only {
+  &.is-active {
+    opacity: 1;
   }
+
+  @include bottom-vw(50, 50);
 
   a {
     display: flex;
@@ -225,8 +230,18 @@
   display: flex;
   align-items: center;
   position: absolute;
-  @include right-vw(50, 10);
-  @include top-vw(120, 50);
+  z-index: 1;
+
+  &.--postion01 {
+    @include top-vw(150,50);
+     @include right-vw(80,20);
+  }
+
+  &.--postion02 {
+  @include top-vw(150,92);
+     @include right-vw(156,20);
+  }
+  
 
   @include sp-only {
     display: block;
@@ -320,6 +335,18 @@
           opacity: 0.7;
         }
       }
+    }
+  }
+
+  &.--white {
+    .l-button-and-cursol__button a {
+      color: $color-white;
+      &::after {
+        background-image: url(../../assets/images/common/icon-beaf-white.svg);
+      }
+    }
+    .l-button-and-cursol__cursol::before {
+      background-color: $color-white;
     }
   }
 }

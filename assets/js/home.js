@@ -1,103 +1,103 @@
 document.addEventListener("DOMContentLoaded", () => {
+
+  /* =========================
+     Header Menu
+  ========================= */
   const menuButton = document.querySelector(".l-header__menu");
   const header = document.querySelector(".l-header");
   const overlay = document.querySelector(".overlay");
   const body = document.body;
 
-  if (!menuButton || !header || !overlay) return;
+  if (menuButton && header && overlay) {
+    menuButton.addEventListener("click", () => {
+      const isActive = header.classList.contains("is-active");
 
-  menuButton.addEventListener("click", () => {
-    const isActive = header.classList.contains("is-active");
+      header.classList.toggle("is-active", !isActive);
+      overlay.classList.toggle("is-active", !isActive);
 
-    if (!isActive) {
-      // 開く
-      header.classList.add("is-active");
-      overlay.classList.add("is-active");
-      body.style.overflow = "hidden"; // スクロール禁止
-    } else {
-      // 閉じる
-      header.classList.remove("is-active");
-      overlay.classList.remove("is-active");
-      body.style.overflow = ""; // スクロール復活
-    }
-  });
-});
+      // メニュー操作時は常に scroll 状態
+      header.classList.add("is-scroll");
 
-document.addEventListener("DOMContentLoaded", () => {
-  const faqItems = document.querySelectorAll(".l-faq__item");
+      body.style.overflow = isActive ? "" : "hidden";
+    });
+  }
 
-  faqItems.forEach((item) => {
-    const question = item.querySelector(".l-faq__q");
-    const answer = item.querySelector(".l-faq__a");
+  /* =========================
+     Header Scroll
+  ========================= */
+  if (header) {
+    const onScroll = () => {
+      if (header.classList.contains("is-active")) return;
+      header.classList.toggle("is-scroll", window.scrollY > 0);
+    };
 
-    question.addEventListener("click", () => {
+    onScroll();
+    window.addEventListener("scroll", onScroll);
+  }
+
+  /* =========================
+     FAQ Accordion
+  ========================= */
+  document.querySelectorAll(".l-faq__item").forEach(item => {
+    const q = item.querySelector(".l-faq__q");
+    const a = item.querySelector(".l-faq__a");
+    if (!q || !a) return;
+
+    q.addEventListener("click", () => {
       const isOpen = item.classList.contains("is-active");
 
       if (isOpen) {
-        // close
-        answer.style.height = answer.scrollHeight + "px";
+        a.style.height = `${a.scrollHeight}px`;
         requestAnimationFrame(() => {
-          answer.style.height = "0";
-          answer.style.opacity = "0";
+          a.style.height = "0";
+          a.style.opacity = "0";
         });
         item.classList.remove("is-active");
       } else {
-        // open
         item.classList.add("is-active");
-        answer.style.height = answer.scrollHeight + "px";
-        answer.style.opacity = "1";
+        a.style.height = `${a.scrollHeight}px`;
+        a.style.opacity = "1";
 
-        answer.addEventListener("transitionend", function handler() {
-          answer.style.height = "auto";
-          answer.removeEventListener("transitionend", handler);
-        });
+        a.addEventListener(
+          "transitionend",
+          function handler() {
+            a.style.height = "auto";
+            a.removeEventListener("transitionend", handler);
+          }
+        );
       }
     });
   });
-});
 
-document.addEventListener("DOMContentLoaded", () => {
-  document.querySelectorAll(".js-slider-block").forEach((block) => {
+  /* =========================
+     Swiper Slider
+  ========================= */
+  document.querySelectorAll(".js-slider-block").forEach(block => {
     const swiperEl = block.querySelector(".js-swiper");
     const cursol = block.querySelector(".l-button-and-cursol__cursol");
     if (!swiperEl || !cursol) return;
 
-    const prevBtn = cursol.children[0];
-    const nextBtn = cursol.children[1];
-
+    const [prevBtn, nextBtn] = cursol.children;
     const slidesPerView = parseFloat(block.dataset.slides) || 3.4;
     const spaceBetween = parseInt(block.dataset.space, 10) || 40;
 
     const swiper = new Swiper(swiperEl, {
       slidesPerView,
       spaceBetween,
-
       loop: true,
       centeredSlides: true,
-      centeredSlidesBounds: true,
       grabCursor: true,
-
-      /* 👇 左右の見切れ量 */
       slidesOffsetBefore: 24,
       slidesOffsetAfter: 24,
-
-      /* 👇 初期は中央 */
       initialSlide: Math.floor(
         swiperEl.querySelectorAll(".swiper-slide").length / 2
       ),
-
-      /* =========================
-         自動スライド設定
-      ========================= */
       autoplay: {
-        delay: 3500, // 次に動くまでの待ち時間（ms）
-        disableOnInteraction: false, // 操作しても止まらない
-        pauseOnMouseEnter: true, // hover中は止める（UX◎）
+        delay: 3500,
+        disableOnInteraction: false,
+        pauseOnMouseEnter: true,
       },
-
-      /* 👇 スライド移動スピード（ここが「ゆっくり感」） */
-      speed: 900, // 600〜1200あたりが自然
-
+      speed: 900,
       breakpoints: {
         0: {
           slidesPerView: 1.2,
@@ -117,103 +117,102 @@ document.addEventListener("DOMContentLoaded", () => {
     prevBtn.addEventListener("click", () => swiper.slidePrev());
     nextBtn.addEventListener("click", () => swiper.slideNext());
   });
-});
 
-
-document.addEventListener("DOMContentLoaded", () => {
-  const CLASSNAME = "-visible";
-  const DELAY_STEP = 0.06;
-
-  const targets = document.querySelectorAll(".js-text-anim");
-
+  /* =========================
+     Text Animation
+  ========================= */
+  const TEXT_VISIBLE_CLASS = "-visible";
+  const TEXT_DELAY_STEP = 0.06;
   const isSP = window.matchMedia("(max-width: 768px)").matches;
 
-  const observer = new IntersectionObserver(
+  const textObserver = new IntersectionObserver(
     (entries, obs) => {
-      entries.forEach((entry) => {
+      entries.forEach(entry => {
         if (!entry.isIntersecting) return;
-
-        const container = entry.target;
-        container.classList.add(CLASSNAME);
-        obs.unobserve(container);
+        entry.target.classList.add(TEXT_VISIBLE_CLASS);
+        obs.unobserve(entry.target);
       });
     },
     {
-      root: null,
-      rootMargin: isSP
-        ? "0px 0px -45% 0px"
-        : "0px 0px -35% 0px",
-      threshold: 0,
+      rootMargin: isSP ? "0px 0px -45% 0px" : "0px 0px -35% 0px",
     }
   );
 
-  targets.forEach((container) => {
-    /**
-     * 対象要素：
-     * 1. .en .jp .sub など
-     * 2. js-text-anim 直下のテキストノード
-     */
-    const elements = container.querySelectorAll(
+  document.querySelectorAll(".js-text-anim").forEach(container => {
+    const targets = container.querySelectorAll(
       ".en, .jp, .sub, .en-insta-01, .en-insta-02"
     );
 
-    // ① en / jp 等がある場合
-    if (elements.length) {
-      elements.forEach((el) => splitText(el));
-    } 
-    // ② 直書きテキストの場合
-    else {
-      splitText(container);
-    }
+    (targets.length ? targets : [container]).forEach(el => {
+      const nodes = [...el.childNodes];
+      el.innerHTML = "";
+      let index = 0;
 
-    observer.observe(container);
+      nodes.forEach(node => {
+        if (node.nodeType === Node.TEXT_NODE) {
+          [...node.textContent].forEach(char => {
+            const span = document.createElement("span");
+            span.className = "char";
+            span.textContent = char === " " ? "\u00A0" : char;
+            span.style.transitionDelay = `${index * TEXT_DELAY_STEP}s`;
+            el.appendChild(span);
+            index++;
+          });
+        } else {
+          el.appendChild(node.cloneNode(true));
+        }
+      });
+    });
+
+    textObserver.observe(container);
   });
 
-  /**
-   * テキスト分割関数（br対応）
-   */
-  function splitText(el) {
-    const nodes = Array.from(el.childNodes);
-    el.innerHTML = "";
+  /* =========================
+     Fade In
+  ========================= */
+  const fadeObserver = new IntersectionObserver(
+    (entries, obs) => {
+      entries.forEach(entry => {
+        if (!entry.isIntersecting) return;
+        entry.target.classList.add("is-show");
+        obs.unobserve(entry.target);
+      });
+    },
+    { threshold: 0.2 }
+  );
 
-    let charIndex = 0;
+  document.querySelectorAll(".fade").forEach(el =>
+    fadeObserver.observe(el)
+  );
 
-    nodes.forEach((node) => {
-      // テキストノード
-      if (node.nodeType === Node.TEXT_NODE) {
-        [...node.textContent].forEach((char) => {
-          const span = document.createElement("span");
-          span.classList.add("char");
-          span.textContent = char === " " ? "\u00A0" : char;
-          span.style.transitionDelay = `${charIndex * DELAY_STEP}s`;
-          el.appendChild(span);
-          charIndex++;
-        });
-      }
+  /* =========================
+     Floating Button
+  ========================= */
+  const floatingButton = document.querySelector(".floating-button");
+  const mv = document.querySelector(".p-home-mv");
+  const ranking = document.querySelector(".p-home-ranking");
+  const footer = document.querySelector("footer");
 
-      // br / strong / ruby などは保持
-      if (node.nodeType === Node.ELEMENT_NODE) {
-        el.appendChild(node.cloneNode(true));
-      }
-    });
+  if (floatingButton) {
+    const addObserver = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          floatingButton.classList.add("is-active");
+        }
+      });
+    }, { threshold: 0.1 });
+
+    const removeObserver = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          floatingButton.classList.remove("is-active");
+        }
+      });
+    }, { threshold: 0.1 });
+
+    if (ranking) addObserver.observe(ranking);
+    if (mv) removeObserver.observe(mv);
+    if (footer) removeObserver.observe(footer);
   }
-});
 
-
-
-document.addEventListener("DOMContentLoaded", () => {
-  const targets = document.querySelectorAll(".fade");
-
-  const observer = new IntersectionObserver((entries, obs) => {
-    entries.forEach(entry => {
-      if (!entry.isIntersecting) return;
-
-      entry.target.classList.add("is-show");
-      obs.unobserve(entry.target); // ← 一度だけ
-    });
-  }, {
-    threshold: 0.2
-  });
-
-  targets.forEach(el => observer.observe(el));
 });

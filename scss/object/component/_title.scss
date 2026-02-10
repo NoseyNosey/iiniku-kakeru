@@ -16,6 +16,7 @@
   .en {
     display: block;
     font-weight: $font-weight-regular;
+    letter-spacing: $letter-spacing-1;
     @include font-vw(14, 14);
 
     @include sp-only {
@@ -35,6 +36,11 @@
   &.--white {
     color: $color-white;
   }
+
+  &.--lg {
+    @include font-vw(40, 30);
+    @include margin-bottom-vw(50, 30);
+  }
 }
 
 // ==========================================================================
@@ -51,7 +57,7 @@
     display: block;
     font-weight: $font-weight-regular;
     line-height: 1;
-    @include padding-left-vw(13, 13);
+    letter-spacing: $letter-spacing-1;
     @include font-vw(14, 14);
     @include margin-bottom-vw(5, 5);
 
@@ -63,8 +69,6 @@
     display: block;
     font-weight: $font-weight-regular;
     line-height: 1.4;
-    @include padding-left-vw(10, 10);
-    @include padding-right-vw(10, 10);
     @include padding-bottom-vw(5, 5);
     @include font-vw(34, 26);
 
@@ -74,8 +78,9 @@
 
   .en-insta-01 {
     display: block;
-    font-weight: $font-weight-medium;
+    font-weight: $font-weight-regular;
     line-height: 1;
+    letter-spacing: $letter-spacing-1;
     @include font-vw(36, 26);
     @include margin-bottom-vw(8, 8);
     @include padding-left-vw(10, 10);
@@ -86,8 +91,9 @@
 
   .en-insta-02 {
     display: block;
-    font-weight: $font-weight-medium;
+    font-weight: $font-weight-regular;
     line-height: 1;
+    letter-spacing: $letter-spacing-1;
     @include font-vw(14, 14);
     @include padding-bottom-vw(10, 10);
     @include padding-left-vw(10, 10);
@@ -100,6 +106,15 @@
   &.--white {
     color: $color-white;
   }
+
+  &.--initial {
+    .jp {
+      line-height: 1;
+      span:first-child {
+        @include font-vw(66, 40);
+      }
+    }
+  }
 }
 
 // ==========================================================================
@@ -107,7 +122,7 @@
 // ==========================================================================
 .c-title03 {
   display: inline-block;
-  font-weight: $font-weight-medium;
+  font-weight: $font-weight-regular;
   line-height: 1.6;
   @include padding-left-vw(10, 10);
   @include padding-right-vw(10, 10);
@@ -133,7 +148,8 @@
 
   .en {
     display: block;
-    font-weight: $font-weight-medium;
+    font-weight: $font-weight-regular;
+    letter-spacing: $letter-spacing-1;
     @include font-vw(14, 14);
     @include margin-bottom-vw(10, 0);
 
@@ -143,7 +159,7 @@
 
   .jp {
     display: block;
-    font-weight: $font-weight-bold;
+    font-weight: $font-weight-regular;
     line-height: 1.6;
     @include font-vw(40, 30);
 
@@ -152,7 +168,7 @@
   }
 
   .sub {
-    font-weight: $font-weight-medium;
+    font-weight: $font-weight-regular;
     position: relative;
     display: inline-block;
     @include font-vw(18, 14);
@@ -168,7 +184,7 @@
       position: absolute;
       right: 100%;
       bottom: 0;
-      background-color: $color-black;
+      background-color: $color-white;
       @include top-vw(17, 17);
       @include height-vw(1, 1);
       @include width-vw(115, 115);
@@ -184,7 +200,7 @@
       position: absolute;
       left: 100%;
       bottom: 0;
-      background-color: $color-black;
+      background-color: $color-white;
       @include top-vw(17, 13);
       @include height-vw(1, 1);
       @include width-vw(115, 50);
@@ -225,4 +241,14 @@
   &.--white {
     color: $color-white;
   }
+}
+
+.c-title-vertical {
+  writing-mode: vertical-rl;
+  margin-left: auto;
+  margin-right: auto;
+  @include padding-top-vw(15, 10);
+  @include padding-bottom-vw(15, 10);
+  @include border-left-vw(1, 1, solid, $color-black);
+  @include font-vw(14, 12);
 }

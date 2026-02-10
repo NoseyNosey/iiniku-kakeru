@@ -31,9 +31,10 @@
 
   &__image {
     position: relative;
-    @include width-vw(700);
+    @include width-vw(630);
     @include sp-only {
       width: 100%;
+      @include margin-bottom-vw(0,10);
     }
 
     // &::after {
@@ -99,8 +100,10 @@
   }
 
   &__texts {
-    @include margin-top-vw(40, 30);
+    @include width-vw(630);
+    // @include margin-top-vw(20, 20);
     @include sp-only {
+      width: 100%;
     }
     &.--left {
       @include margin-left-vw(55, 0);
@@ -116,12 +119,14 @@
 
   &__text01 {
     display: flex;
+    font-weight: $font-weight-regular;
     @include margin-bottom-vw(10, 10);
     @include sp-only {
     }
 
     .num {
       position: relative;
+      font-weight: $font-weight-regular;
       @include font-vw(36, 30);
       @include margin-right-vw(15, 15);
       @include padding-right-vw(15, 15);
@@ -132,7 +137,7 @@
         display: block;
         position: absolute;
         right: 0;
-        background-color: $color-white;
+        background-color: $color-black;
         @include top-vw(14, 10);
         @include width-vw(1, 1);
         @include height-vw(35, 35);
@@ -142,10 +147,13 @@
     }
 
     .title {
-      font-weight: $font-weight-bold;
+      font-weight: $font-weight-regular;
       @include font-vw(28, 22);
       @include padding-top-vw(8, 8);
       @include sp-only {
+      }
+      span {
+         @include font-vw(20, 14);
       }
     }
   }
@@ -153,6 +161,7 @@
   &__text02 {
     letter-spacing: $letter-spacing-1;
     line-height: 2.5;
+    font-weight: $font-weight-regular;
     @include margin-bottom-vw(30, 15);
     @include font-vw(14, 14);
     @include sp-only {
@@ -183,5 +192,8 @@
 
   &.--white {
     color: $color-white;
+    .l-num__texts .num::after {
+      background-color: $color-white;
+    }
   }
 }

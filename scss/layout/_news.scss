@@ -5,15 +5,6 @@
 // News Section
 // ==========================================================================
 
-.p-home-news {
-  @include padding-top-vw(100, 50);
-  @include padding-bottom-vw(100, 50);
-  @include sp-only {
-    @include padding-left-vw(0, 20);
-    @include padding-right-vw(0, 20);
-  }
-}
-
 .l-news {
   &__item {
     a {

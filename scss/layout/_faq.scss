@@ -10,7 +10,7 @@
     position: relative;
     cursor: pointer;
     transition: $transition;
-    @include padding-vw(25, 60, 25, 50, 25, 60, 25, 50);
+    @include padding-vw(25, 60, 25, 50, 25, 50, 15, 20);
     @include border-bottom-vw(1, 1, solid, $color-black-alpha-25);
     @include sp-only {
     }
@@ -25,8 +25,8 @@
       transition: $transition;
       @include width-vw(30, 30);
       @include height-vw(30, 30);
-      @include right-vw(20, 20);
-      @include top-vw(50, 50);
+      @include right-vw(20, 10);
+      @include top-vw(50, 40);
       @include sp-only {
       }
     }
@@ -62,8 +62,8 @@
   }
 
   &__inicial {
-    @include font-vw(38, 30);
-    @include margin-right-vw(40, 40);
+    @include font-vw(32, 28);
+    @include margin-right-vw(40, 20);
     @include sp-only {
     }
   }
@@ -71,7 +71,7 @@
   &__text {
     line-height: 2;
     @include font-vw(16, 16);
-    @include padding-top-vw(23, 20);
+    @include padding-top-vw(18, 14);
     @include sp-only {
     }
   }

@@ -9,13 +9,13 @@
   position: fixed;
   left: 0;
   right: 0;
-  z-index: 10;
+  top: 0;
+  z-index: 100;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  @include padding-left-vw(40);
-  @include padding-right-vw(40);
-  @include top-vw(35, 20);
+  transition: $transition;
+  @include padding-vw(40, 40, 40, 40, 20, 10, 20, 20);
 
   @include sp-only {
   }
@@ -36,12 +36,11 @@
     @include sp-only {
       display: flex;
       align-items: center;
-      @include margin-left-vw(0, 20);
     }
 
     a {
       display: block;
-      @include width-vw(178, 178);
+      @include width-vw(178, 100);
     }
   }
 
@@ -52,7 +51,7 @@
     z-index: 3;
 
     @include sp-only {
-      @include margin-right-vw(0, 20);
+
     }
   }
 
@@ -307,6 +306,18 @@
       pointer-events: all;
     }
   }
+
+  &.is-scroll {
+    background-color: rgba(0, 0, 0, 0.75);
+    @include padding-vw(20, 20, 20, 20, 10, 10, 10, 20);
+  }
+
+  &.--white {
+    background-color: rgba(255, 255, 255, 0.5);
+    .l-header__menu-inner div {
+      background-color: $color-black;
+    }
+  }
 }
 
 // 全画面オーバーレイ
@@ -321,6 +332,7 @@
   background-color: $color-white;
   opacity: 0;
   pointer-events: none;
+  z-index: 99;
 
   &.is-active {
     opacity: 1;

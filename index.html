@@ -126,12 +126,13 @@
   <main id="main" class="p-home">
     <section class="p-home-mv" id="p-home-mv">
       <div class="p-home-mv__left fade fade-right"></div>
-      <div class="p-home-mv__center u-pattern-bg u-white-bg fade">
+      <div class="p-home-mv__center u-bg-pattern u-white-bg fade">
         <h1 class="p-home-mv__center-image">
-          <img src="./assets/images/home/mv-main-image.svg" alt="旨味が逃げる前に時間を止める。">
+          <img class="u-pc-only" src="./assets/images/home/mv-main-image.svg" alt="旨味が逃げる前に時間を止める。">
+          <img class="u-sp-only" src="./assets/images/home/mv-main-image-sp.svg" alt="旨味が逃げる前に時間を止める。">
         </h1>
         <p class="p-home-mv__center-text01">
-          <span>ゼロカラ急速冷凍</span>で、<br>
+          <span><a href="./zerokara/">ゼロカラ急速冷凍</a></span>で、<br>
           劣化ゾーン（-1℃〜-5℃）を一瞬で通過。<br>
           色・食感・旨味を“切りたてレベル”でキープします。
         </p>
@@ -163,7 +164,7 @@
       </div>
     </section>
 
-    <section class="p-home-ranking u-pattern-bg u-bg-white js-slider-block fade" id="p-home-ranking" data-slides="3.4"
+    <section class="p-home-ranking u-bg-pattern u-bg-white js-slider-block fade" id="p-home-ranking" data-slides="3.4"
       data-space="40">
 
       <div class="l-inner --lg">
@@ -173,7 +174,7 @@
         </h2>
       </div>
 
-      <div class="l-button-and-cursol">
+      <div class="l-button-and-cursol --postion01">
         <div class="l-button-and-cursol__button">
           <a href="./products/">全ての商品を見る</a>
         </div>
@@ -387,7 +388,7 @@
       </div>
     </section>
 
-    <section class="p-home-products u-pattern-bg u-bg-gray" id="p-home-products">
+    <section class="p-home-products u-bg-pattern u-bg-gray" id="p-home-products">
       <div class="l-inner --sm">
         <h2 class="c-title01 js-text-anim">
           <span class="en">Products</span>
@@ -594,52 +595,135 @@
       </div>
     </section>
 
-    <section class="p-home-news fade" id="p-home-news">
+    <section class="p-home-news u-bg-pattern fade" id="p-home-news">
+      <div class="l-button-and-cursol --postion02">
+        <div class="l-button-and-cursol__button">
+          <a href="./products/">全てのお知らせを見る</a>
+        </div>
+      </div>
       <div class="l-inner --md">
         <h2 class="c-title02 js-text-anim">
           <span class="en">News</span>
           <span class="jp">お知らせ</span>
         </h2>
-        <div class="l-button-and-cursol">
-          <div class="l-button-and-cursol__button">
-            <a href="./products/">全てのお知らせを見る</a>
-          </div>
-        </div>
+        <ul class="l-news">
+          <li class="l-news__item">
+            <a href="./news/article01.html">
+              <span class="l-news__date">2026.01.25</span>
+              <span class="l-news__text">【今週の入荷】神戸和牛の数量限定ラインナップを公開しました。</span>
+            </a>
+          </li>
+          <li class="l-news__item">
+            <a href="./news/article01.html">
+              <span class="l-news__date">2026.01.23</span>
+              <span class="l-news__text">【完売御礼】今週分はすべて売り切れました。</span>
+            </a>
+          </li>
+          <li class="l-news__item">
+            <a href="./news/article01.html">
+              <span class="l-news__date">2026.01.16</span>
+              <span class="l-news__text">【販売開始】今夜20:00より限定販売を開始します。</span>
+            </a>
+          </li>
+        </ul>
       </div>
-      <ul class="l-news">
-        <li class="l-news__item">
-          <a href="./news/article01.html">
-            <span class="l-news__date">2026.01.25</span>
-            <span class="l-news__text">【今週の入荷】神戸和牛の数量限定ラインナップを公開しました。</span>
-          </a>
-        </li>
-        
-        <li class="l-news__item">
-          <a href="./news/article01.html">
-            <span class="l-news__date">2026.01.23</span>
-            <span class="l-news__text">【完売御礼】今週分はすべて売り切れました。</span>
-          </a>
-        </li>
-        <li class="l-news__item">
-          <a href="./news/article01.html">
-            <span class="l-news__date">2026.01.16</span>
-            <span class="l-news__text">【販売開始】今夜20:00より限定販売を開始します。</span>
-          </a>
-        </li>
-      </ul>
     </section>
 
-    <section class="p-home-instagram js-slider-block u-bg-gray fade" id="p-home-instagram" data-slides="4.4"
-      data-space="30">
-
-      <div class="l-inner --lg">
+    <section class="p-home-faq u-bg-pattern u-bg-gray fade" id="p-home-faq">
+      <div class="l-inner --md">
         <h2 class="c-title02 js-text-anim">
-          <span class="en-insta-01">Instagram</span>
-          <span class="en-insta-02">@iinikukakeru</span>
+          <span class="en">FAQ</span>
+          <span class="jp">よくある質問</span>
         </h2>
-      </div>
+        <ul class="l-faq">
+          <li class="l-faq__item">
+            <div class="l-faq__q">
+              <span class="l-faq__inicial">Q.</span>
+              <p class="l-faq__text">
+                冷凍のお肉は美味しさが落ちませんか？
+              </p>
+            </div>
+            <div class="l-faq__a">
+              <span class="l-faq__inicial">A.</span>
+              <p class="l-faq__text">
+                iiniku翔では「ゼロカラ急速冷凍」を採用し、劣化しやすい温度帯を短時間で通過させています。
+                そのため、解凍後もドリップが出にくく、食感・旨味・香りを高いレベルで保つことができます。
+              </p>
+            </div>
+          </li>
 
-      <div class="l-button-and-cursol">
+          <li class="l-faq__item">
+            <div class="l-faq__q">
+              <span class="l-faq__inicial">Q.</span>
+              <p class="l-faq__text">
+                解凍方法はどうすればいいですか？
+              </p>
+            </div>
+            <div class="l-faq__a">
+              <span class="l-faq__inicial">A.</span>
+              <p class="l-faq__text">
+                冷蔵庫でゆっくり解凍していただくのがおすすめです。
+                前日から冷蔵庫に移していただくことで、旨味を逃がさず美味しくお召し上がりいただけます。
+              </p>
+            </div>
+          </li>
+
+          <li class="l-faq__item">
+            <div class="l-faq__q">
+              <span class="l-faq__inicial">Q.</span>
+              <p class="l-faq__text">
+                ギフトとして直接相手に送ることはできますか？
+              </p>
+            </div>
+            <div class="l-faq__a">
+              <span class="l-faq__inicial">A.</span>
+              <p class="l-faq__text">
+                はい、可能です。冷凍配送のため受け取りやすく、相手のタイミングでお楽しみいただけます。
+                納品書など金額が分かるものは同梱されませんので、ギフトとして安心してご利用ください。
+              </p>
+            </div>
+          </li>
+
+          
+          <li class="l-faq__item">
+            <div class="l-faq__q">
+              <span class="l-faq__inicial">Q.</span>
+              <p class="l-faq__text">
+                解凍方法はどうすればいいですか？
+              </p>
+            </div>
+            <div class="l-faq__a">
+              <span class="l-faq__inicial">A.</span>
+              <p class="l-faq__text">
+                冷蔵庫でゆっくり解凍していただくのがおすすめです。
+                前日から冷蔵庫に移していただくことで、旨味を逃がさず美味しくお召し上がりいただけます。
+              </p>
+            </div>
+          </li>
+
+          <li class="l-faq__item">
+            <div class="l-faq__q">
+              <span class="l-faq__inicial">Q.</span>
+              <p class="l-faq__text">
+                ギフトとして直接相手に送ることはできますか？
+              </p>
+            </div>
+            <div class="l-faq__a">
+              <span class="l-faq__inicial">A.</span>
+              <p class="l-faq__text">
+                はい、可能です。冷凍配送のため受け取りやすく、相手のタイミングでお楽しみいただけます。
+                納品書など金額が分かるものは同梱されませんので、ギフトとして安心してご利用ください。
+              </p>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+
+    <section class="p-home-instagram js-slider-block" id="p-home-instagram" data-slides="4.4" data-space="30">
+
+      <div class="l-button-and-cursol --white --postion01">
         <div class="l-button-and-cursol__button">
           <a href="https://www.instagram.com/iinikukakeru/" target="_blank">
             全ての投稿を見る
@@ -649,6 +733,13 @@
           <div><img src="./assets/images/common/pager-left-white.svg" alt="←"></div>
           <div><img src="./assets/images/common/pager-right-white.svg" alt="→"></div>
         </div>
+      </div>
+
+      <div class="l-inner --lg fade">
+        <h2 class="c-title02 --white js-text-anim">
+          <span class="en-insta-01">Instagram</span>
+          <span class="en-insta-02">@iinikukakeru</span>
+        </h2>
       </div>
 
       <div class="swiper l-instagram-slider js-swiper">
@@ -788,8 +879,8 @@
     </section>
   </main>
 
-  <footer class="l-footer fade" id="footer">
-    <div class="l-inner --lg">
+  <footer class="l-footer u-bg-pattern" id="footer">
+    <div class="l-inner --md">
       <div class="l-footer__logo">
         <a href="./">
           <img src="./assets/images/common/logo-white.svg" alt="iiniku翔">
@@ -836,9 +927,13 @@
           <li class="l-footer__nav-instagram">
             <a href="https://www.instagram.com/iinikukakeru/">
               <img src="./assets/images/common/icon-instagram-white.svg" alt="instagram">
+            </a>
           </li>
         </ul>
       </div>
+      <p class="l-footer__copy">
+        <small>© NIKULABO. All Rights Reserved.</small>
+      </p>
     </div>
   </footer>
 

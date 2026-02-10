@@ -15,6 +15,7 @@
 @use "layout/news";
 @use "layout/faq";
 @use "layout/product";
+@use "layout/breadcrumb";
 
 // object (Component, Project, Utility)
 @use "object/component/title";
@@ -27,3 +28,5 @@
 
 // project
 @use "project/home";
+@use "project/zerokara";
+@use "project/subpage";

@@ -1,0 +1,22 @@
+@use "../foundations/variables" as *;
+@use "../foundations/mixins" as *;
+
+.l-breadcrumb {
+  @include padding-top-vw(150,100);
+      @include padding-left-vw(0,20);
+          @include padding-right-vw(0,20);
+  .breadcrumb {
+    display: flex;
+    li {
+      @include font-vw(12,12);
+      a {
+        text-decoration: underline;
+      }
+    }
+  }
+
+  .slash {
+    @include margin-left-vw(10,10);
+     @include margin-right-vw(10,10);
+  }
+}

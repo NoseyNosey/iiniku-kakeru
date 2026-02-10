@@ -28,8 +28,8 @@
   /* large */
   &.--lg {
     @include pc-only {
-      @include padding-left-vw(40, 20);
-      @include padding-right-vw(40, 20);
+      @include padding-left-vw(80, 20);
+      @include padding-right-vw(80, 20);
     }
   }
 }

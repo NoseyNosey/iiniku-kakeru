@@ -7,20 +7,31 @@
 .p-home-mv {
   display: flex;
   justify-content: space-between;
-  @include height-vw(700, 700);
+  @include height-vw(700, 650);
+  @include sp-only {
+    display: block;
+    background: url(../../assets/images/home/mv-bg-sp.png) no-repeat center / cover;
+  }
   &__left {
     width: 33.33333%;
     background: url(../../assets/images/home/mv-left-image.png) center / cover;
+    @include sp-only {
+      display: none;
+    }
   }
   &__center {
     width: 33.33333%;
+     @include sp-only {
+      width: 100%;
+      @include padding-top-vw(0,80);
+    }
   }
   &__center-image {
     margin-left: auto;
     margin-right: auto;
-    @include width-vw(305, 305);
-    @include margin-top-vw(50, 50);
-    @include margin-bottom-vw(20, 20);
+    @include width-vw(305, 300);
+    @include margin-top-vw(50, 0);
+    @include margin-bottom-vw(20, 0);
   }
   &__center-text01 {
     text-align: center;
@@ -28,20 +39,26 @@
     font-weight: $font-weight-medium;
     line-height: 2.2;
     @include margin-bottom-vw(20, 20);
-    @include font-vw(14, 14);
+    @include font-vw(14, 12);
+    @include sp-only {
+      color: $color-white;
+    }
     span {
-      @include font-vw(22);
+      @include font-vw(22,18);
     }
   }
   &__center-text02 {
     margin-left: auto;
     margin-right: auto;
-    @include margin-bottom-vw(45, 45);
-    @include width-vw(400, 400);
+    @include margin-bottom-vw(45, 30);
+    @include width-vw(400, 320);
   }
   &__right {
     width: 33.33333%;
     background: url(../../assets/images/home/mv-right-image.png) center / cover;
+  @include sp-only {
+       display: none;
+    }
   }
 }
 
@@ -224,6 +241,19 @@
 }
 
 // ==========================================================================
+// News Section
+// ==========================================================================
+
+.p-home-news {
+  @include padding-top-vw(120, 60);
+  @include padding-bottom-vw(120, 60);
+  @include sp-only {
+    @include padding-left-vw(0, 20);
+    @include padding-right-vw(0, 20);
+  }
+}
+
+// ==========================================================================
 // FAQ Section
 // ==========================================================================
 
@@ -243,6 +273,8 @@
 // ==========================================================================
 
 .p-home-instagram {
+    background: url(../../assets/images/home/instagram-bg.png) no-repeat center /
+    cover;
   @include padding-top-vw(120, 60);
   @include padding-bottom-vw(120, 60);
   @include sp-only {
