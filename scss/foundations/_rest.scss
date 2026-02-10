@@ -137,13 +137,15 @@ section {
 }
 
 /* リンクの標準化 */
-a {
+a, button {
   text-decoration: none;
   background-color: transparent;
   color: inherit;
   transition: $transition;
 }
 
+button:hover,
+button:focus,
 a:hover,
 a:focus {
   @include pc-only {

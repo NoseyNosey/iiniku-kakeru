@@ -6,7 +6,7 @@
 // ==========================================================================
 
 .c-button01 {
-  a {
+  :is(a, button) {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -14,38 +14,37 @@
     font-weight: $font-weight-regular;
     position: relative;
     overflow: hidden;
-    transition: $transition;
+    cursor: pointer;
+
     background: url(../../assets/images/common/bg-noise.png) repeat center / 50%;
     background-color: $color-black;
+    transition: $transition;
+
+    // buttonリセット
+    border: none;
+    appearance: none;
+
     @include border-vw(1, 1, solid, $color-black);
     @include font-vw(16, 16);
     @include width-vw(300, 300);
     @include height-vw(60, 60);
 
-    @include sp-only {
-    }
-
-    // 左下の装飾三角形
+    // 左下三角
     &::before {
       content: "";
-      display: block;
       position: absolute;
       bottom: 0;
       left: 0;
       background-color: $color-white;
-      transition: $transition;
       clip-path: polygon(0 0, 100% 100%, 0 100%);
+      transition: $transition;
       @include width-vw(18, 18);
       @include height-vw(18, 18);
-
-      @include sp-only {
-      }
     }
 
-    // 右側の矢印アイコン
+    // 右矢印
     &::after {
       content: "";
-      display: block;
       position: absolute;
       top: 0;
       bottom: 0;
@@ -56,15 +55,13 @@
       @include width-vw(30, 30);
       @include height-vw(30, 30);
       @include right-vw(15, 15);
-
-      @include sp-only {
-      }
     }
 
     &:hover {
       color: $color-black;
+      opacity: 1;
+
       @include pc-only {
-        opacity: 1;
         background-color: $color-white;
       }
 
@@ -83,27 +80,22 @@
     }
   }
 
+  &.--w100 {
+    :is(a, button) {
+      width: 100%;
+    }
+  }
+
   &.--red {
-    a {
-      background: url(../../assets/images/common/bg-noise.png) repeat center /
-        50%;
-      border-color: $color-red;
+    :is(a, button) {
       background-color: $color-red;
+      border-color: $color-red;
       color: $color-white;
-
-      &::before {
-        background-color: $color-white;
-      }
-
-      &::after {
-        background-image: url(../../assets/images/common/arrow01-right-white.svg);
-      }
 
       &:hover {
         @include pc-only {
-                border-color: $color-black;
-          color: $color-white;
           background-color: $color-black;
+          border-color: $color-black;
         }
 
         &::before {
@@ -116,6 +108,33 @@
           @include pc-only {
             background-image: url(../../assets/images/common/arrow01-right-white.svg);
           }
+        }
+      }
+    }
+  }
+
+  &.--cart :is(a, button) {
+    @include height-vw(76, 64);
+        @include font-vw(18, 18);
+    &::after {
+      content: "";
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      margin: auto;
+      background: url(../../assets/images/common/icon-cart-white.svg) no-repeat
+        center / 100%;
+      transition: $transition;
+      @include width-vw(40, 30);
+      @include height-vw(40, 30);
+      @include right-vw(20, 20);
+    }
+    &:hover {
+      &::after {
+        @include pc-only {
+          transform: translateX(0);
+           background: url(../../assets/images/common/icon-cart-white.svg) no-repeat
+        center / 100%;
         }
       }
     }
@@ -233,15 +252,14 @@
   z-index: 1;
 
   &.--postion01 {
-    @include top-vw(150,50);
-     @include right-vw(80,20);
+    @include top-vw(150, 50);
+    @include right-vw(80, 20);
   }
 
   &.--postion02 {
-  @include top-vw(150,92);
-     @include right-vw(156,20);
+    @include top-vw(150, 92);
+    @include right-vw(156, 20);
   }
-  
 
   @include sp-only {
     display: block;
@@ -349,4 +367,52 @@
       background-color: $color-white;
     }
   }
+}
+
+.quantity-selector {
+  background-color: $color-black-alpha-5;
+  position: relative;
+  @include height-vw(60, 60);
+  @include margin-bottom-vw(30, 30);
+  select {
+    width: 100%;
+    height: 100%;
+    text-align: right;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    @include padding-right-vw(50, 50);
+    @include font-vw(16, 16);
+  }
+  &__text {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    @include padding-top-vw(17, 17);
+    @include padding-left-vw(20, 20);
+    @include font-vw(16, 16);
+    &::after {
+      content: "";
+      display: block;
+      background: url(../../assets/images/common/arrow03-bottom-black.svg)
+        no-repeat center / 100% 100%;
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      margin: auto;
+      @include right-vw(10, 10);
+      @include width-vw(30, 30);
+      @include height-vw(30, 30);
+    }
+  }
+}
+
+.quantity-selector,
+.quantity-selector select,
+.quantity-selector label {
+  cursor: pointer;
 }

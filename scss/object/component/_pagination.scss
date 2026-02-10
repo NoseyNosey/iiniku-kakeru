@@ -1,0 +1,43 @@
+@use "../../foundations/variables" as *;
+@use "../../foundations/mixins" as *;
+
+// ==========================================================================
+// Pagination (.c-pagination)
+// ==========================================================================
+
+.c-pagination {
+  @include margin-top-vw(60, 30);
+
+  &__list {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    list-style: none;
+    padding: 0;
+  }
+
+  &__item {
+    @include padding-vw(20,20,20,20,15,15,15,15);
+    a {
+      @include font-vw(16,16);
+    }
+
+    &.--dots {
+      pointer-events: none;
+       @include font-vw(16,16);
+    }
+
+    &.is-active {
+      a {
+        text-decoration: underline;
+      }
+    }
+
+    &.--prev,
+    &.--next {
+      a {
+        font-size: 18px;
+      }
+    }
+  }
+}

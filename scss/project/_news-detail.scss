@@ -1,0 +1,58 @@
+@use "../foundations/variables" as *;
+@use "../foundations/mixins" as *;
+
+// ==========================================================================
+// News (.p-news)
+// ==========================================================================
+
+.p-news {
+  &__date {
+    @include font-vw(20, 16);
+  }
+
+  &__title {
+    @include font-vw(30, 22);
+    @include padding-bottom-vw(20, 10);
+    @include border-bottom-vw(1, 1, solid, $color-black);
+    @include margin-bottom-vw(50, 30);
+  }
+
+  &__main-image {
+    @include margin-bottom-vw(30, 30);
+  }
+}
+
+.p-news-contents {
+  @include padding-top-vw(80, 40);
+  @include padding-bottom-vw(120, 60);
+  @include sp-only {
+    @include padding-left-vw(0, 20);
+    @include padding-right-vw(0, 20);
+  }
+
+  p {
+    line-height: 2.2;
+    @include font-vw(14, 12);
+    @include margin-top-vw(15, 15);
+    @include margin-bottom-vw(15, 15);
+  }
+
+  h2 {
+    @include font-vw(20, 18);
+    @include padding-bottom-vw(5, 5);
+    @include border-bottom-vw(1, 1, solid, $color-black);
+    @include margin-top-vw(60, 40);
+    @include margin-bottom-vw(30, 15);
+  }
+
+  h3 {
+    font-weight: $font-weight-medium;
+    @include font-vw(16, 14);
+    @include margin-top-vw(15, 15);
+    @include margin-bottom-vw(15, 15);
+  }
+
+  &.--margin-adjust {
+    @include padding-top-vw(0,0);
+  }
+}

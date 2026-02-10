@@ -20,6 +20,7 @@
 // object (Component, Project, Utility)
 @use "object/component/title";
 @use "object/component/button";
+@use "object/component/pagination";
 
 @use "object/utility/bg";
 @use "object/utility/respond";
@@ -28,5 +29,6 @@
 
 // project
 @use "project/home";
-@use "project/zerokara";
 @use "project/subpage";
+@use "project/products";
+@use "project/news-detail";

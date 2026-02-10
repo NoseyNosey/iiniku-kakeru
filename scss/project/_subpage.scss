@@ -1,36 +1,44 @@
 @use "../foundations/variables" as *;
 @use "../foundations/mixins" as *;
 
+// ==========================================================================
+// Subpage
+// ==========================================================================
 .p-subpage {
+  /* ===================================
+     Intro
+  =================================== */
   &__intro {
     @include padding-top-vw(60, 40);
     @include padding-bottom-vw(120, 60);
+
     .c-title01 {
       @include margin-top-vw(30, 20);
       @include margin-bottom-vw(50, 20);
+
       @include sp-only {
         display: flex;
         justify-content: center;
       }
     }
+
+    &.--margin-adjust {
+      padding-bottom: 0;
+    }
   }
+
   &__intro-image {
     @include margin-bottom-vw(100, 40);
-    @include sp-only {
-    }
   }
 
   &__intro-catch {
     text-align: center;
     @include font-vw(26, 16);
     @include margin-bottom-vw(25, 15);
-    @include sp-only {
-    }
+
     span {
       font-weight: $font-weight-medium;
       @include font-vw(36, 24);
-      @include sp-only {
-      }
     }
   }
 
@@ -39,10 +47,9 @@
     line-height: 2.5;
     @include font-vw(16, 14);
     @include margin-bottom-vw(100, 50);
-    @include sp-only {
-    }
+
     span {
-        @include font-vw(22, 18);
+      @include font-vw(22, 18);
     }
   }
 
@@ -53,37 +60,36 @@
     }
   }
 
+  /* ===================================
+     Intro Item
+  =================================== */
   &__intro-item {
     display: flex;
     justify-content: space-between;
+
     @include sp-only {
       flex-wrap: wrap;
-    }
-    &:nth-child(odd) {
-      .p-subpage__intro-item-image {
-        @include padding-left-vw(30, 0);
-        @include sp-only {
-        }
-      }
-    }
-    &:nth-child(even) {
-      .p-subpage__intro-item-image {
-        order: 1;
-        @include padding-right-vw(30, 0);
-        @include sp-only {
-        }
-      }
-      .p-subpage__intro-item-texts {
-        order: 2;
-        @include padding-left-vw(50, 0);
-        @include sp-only {
-        }
-      }
     }
 
     + .p-subpage__intro-item {
       @include margin-top-vw(100, 50);
-      @include sp-only {
+    }
+
+    &:nth-child(odd) {
+      .p-subpage__intro-item-image {
+        @include padding-left-vw(30, 0);
+      }
+    }
+
+    &:nth-child(even) {
+      .p-subpage__intro-item-image {
+        order: 1;
+        @include padding-right-vw(30, 0);
+      }
+
+      .p-subpage__intro-item-texts {
+        order: 2;
+        @include padding-left-vw(50, 0);
       }
     }
   }
@@ -91,6 +97,7 @@
   &__intro-item-texts {
     width: 50%;
     @include margin-top-vw(10, 10);
+
     @include sp-only {
       width: 100%;
       order: 2;
@@ -99,27 +106,25 @@
 
   &__intro-item-title {
     font-weight: $font-weight-medium;
-    @include margin-bottom-vw(20, 5);
     @include font-vw(34, 24);
-    @include sp-only {
-    }
+    @include margin-bottom-vw(20, 5);
   }
 
   &__intro-item-description {
     line-height: 2.5;
     @include font-vw(16, 14);
-    @include sp-only {
-    }
   }
 
   &__intro-item-image {
     width: 50%;
+
     @include sp-only {
       width: 100%;
       order: 1;
       overflow: hidden;
       @include height-vw(0, 180);
     }
+
     img {
       @include sp-only {
         width: 100%;
@@ -130,26 +135,33 @@
     }
   }
 
+  /* ===================================
+     Strengths
+  =================================== */
   &__strengths {
     background: url(../../assets/images/common/strength-bg.png) no-repeat
       center / cover;
     @include padding-top-vw(120, 60);
     @include padding-bottom-vw(120, 60);
+
     @include sp-only {
       @include padding-left-vw(0, 20);
       @include padding-right-vw(0, 20);
     }
-    .c-title02 {
-    }
   }
 
+  /* ===================================
+     Comparison
+  =================================== */
   &__comparision {
     @include padding-top-vw(120, 60);
     @include padding-bottom-vw(120, 60);
+
     @include sp-only {
-        @include padding-left-vw(0, 20);
+      @include padding-left-vw(0, 20);
       @include padding-right-vw(0, 20);
     }
+
     .c-title01 {
       @include sp-only {
         text-align: center;
@@ -159,13 +171,46 @@
 
   &__comparision-youtube {
     @include margin-top-vw(50, 30);
-    @include sp-only {
-    }
+
     iframe {
       width: 100%;
       @include height-vw(580, 180);
+    }
+  }
+
+  /* ===================================
+     Products
+  =================================== */
+  .l-products-list {
+    flex-wrap: wrap;
+
+    @include sp-only {
+      justify-content: center;
+    }
+
+    &__item {
       @include sp-only {
+        width: 90%;
       }
+
+      + .l-products-list__item {
+        @include sp-only {
+          @include margin-top-vw(0, 30);
+        }
+      }
+    }
+
+    &__item:nth-child(n + 4) {
+      @include pc-only {
+        @include margin-top-vw(60);
+      }
+    }
+  }
+
+  .l-products__block {
+    @include sp-only {
+      @include padding-left-vw(0, 20);
+      @include padding-right-vw(0, 20);
     }
   }
 }

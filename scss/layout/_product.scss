@@ -60,4 +60,10 @@
       }
     }
   }
+
+  &.--lg {
+    .l-products-list__item {
+       @include width-vw(360, 320);
+    }
+  }
 }

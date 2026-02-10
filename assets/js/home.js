@@ -1,5 +1,4 @@
 document.addEventListener("DOMContentLoaded", () => {
-
   /* =========================
      Header Menu
   ========================= */
@@ -38,7 +37,7 @@ document.addEventListener("DOMContentLoaded", () => {
   /* =========================
      FAQ Accordion
   ========================= */
-  document.querySelectorAll(".l-faq__item").forEach(item => {
+  document.querySelectorAll(".l-faq__item").forEach((item) => {
     const q = item.querySelector(".l-faq__q");
     const a = item.querySelector(".l-faq__a");
     if (!q || !a) return;
@@ -58,13 +57,10 @@ document.addEventListener("DOMContentLoaded", () => {
         a.style.height = `${a.scrollHeight}px`;
         a.style.opacity = "1";
 
-        a.addEventListener(
-          "transitionend",
-          function handler() {
-            a.style.height = "auto";
-            a.removeEventListener("transitionend", handler);
-          }
-        );
+        a.addEventListener("transitionend", function handler() {
+          a.style.height = "auto";
+          a.removeEventListener("transitionend", handler);
+        });
       }
     });
   });
@@ -72,7 +68,7 @@ document.addEventListener("DOMContentLoaded", () => {
   /* =========================
      Swiper Slider
   ========================= */
-  document.querySelectorAll(".js-slider-block").forEach(block => {
+  document.querySelectorAll(".js-slider-block").forEach((block) => {
     const swiperEl = block.querySelector(".js-swiper");
     const cursol = block.querySelector(".l-button-and-cursol__cursol");
     if (!swiperEl || !cursol) return;
@@ -90,7 +86,7 @@ document.addEventListener("DOMContentLoaded", () => {
       slidesOffsetBefore: 24,
       slidesOffsetAfter: 24,
       initialSlide: Math.floor(
-        swiperEl.querySelectorAll(".swiper-slide").length / 2
+        swiperEl.querySelectorAll(".swiper-slide").length / 2,
       ),
       autoplay: {
         delay: 3500,
@@ -127,7 +123,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   const textObserver = new IntersectionObserver(
     (entries, obs) => {
-      entries.forEach(entry => {
+      entries.forEach((entry) => {
         if (!entry.isIntersecting) return;
         entry.target.classList.add(TEXT_VISIBLE_CLASS);
         obs.unobserve(entry.target);
@@ -135,22 +131,22 @@ document.addEventListener("DOMContentLoaded", () => {
     },
     {
       rootMargin: isSP ? "0px 0px -45% 0px" : "0px 0px -35% 0px",
-    }
+    },
   );
 
-  document.querySelectorAll(".js-text-anim").forEach(container => {
+  document.querySelectorAll(".js-text-anim").forEach((container) => {
     const targets = container.querySelectorAll(
-      ".en, .jp, .sub, .en-insta-01, .en-insta-02"
+      ".en, .jp, .sub, .en-insta-01, .en-insta-02",
     );
 
-    (targets.length ? targets : [container]).forEach(el => {
+    (targets.length ? targets : [container]).forEach((el) => {
       const nodes = [...el.childNodes];
       el.innerHTML = "";
       let index = 0;
 
-      nodes.forEach(node => {
+      nodes.forEach((node) => {
         if (node.nodeType === Node.TEXT_NODE) {
-          [...node.textContent].forEach(char => {
+          [...node.textContent].forEach((char) => {
             const span = document.createElement("span");
             span.className = "char";
             span.textContent = char === " " ? "\u00A0" : char;
@@ -172,18 +168,16 @@ document.addEventListener("DOMContentLoaded", () => {
   ========================= */
   const fadeObserver = new IntersectionObserver(
     (entries, obs) => {
-      entries.forEach(entry => {
+      entries.forEach((entry) => {
         if (!entry.isIntersecting) return;
         entry.target.classList.add("is-show");
         obs.unobserve(entry.target);
       });
     },
-    { threshold: 0.2 }
+    { threshold: 0.2 },
   );
 
-  document.querySelectorAll(".fade").forEach(el =>
-    fadeObserver.observe(el)
-  );
+  document.querySelectorAll(".fade").forEach((el) => fadeObserver.observe(el));
 
   /* =========================
      Floating Button
@@ -194,25 +188,50 @@ document.addEventListener("DOMContentLoaded", () => {
   const footer = document.querySelector("footer");
 
   if (floatingButton) {
-    const addObserver = new IntersectionObserver(entries => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          floatingButton.classList.add("is-active");
-        }
-      });
-    }, { threshold: 0.1 });
+    const addObserver = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            floatingButton.classList.add("is-active");
+          }
+        });
+      },
+      { threshold: 0.1 },
+    );
 
-    const removeObserver = new IntersectionObserver(entries => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          floatingButton.classList.remove("is-active");
-        }
-      });
-    }, { threshold: 0.1 });
+    const removeObserver = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            floatingButton.classList.remove("is-active");
+          }
+        });
+      },
+      { threshold: 0.1 },
+    );
 
     if (ranking) addObserver.observe(ranking);
     if (mv) removeObserver.observe(mv);
     if (footer) removeObserver.observe(footer);
   }
+});
 
+
+document.addEventListener("DOMContentLoaded", () => {
+  const mainImage = document.querySelector(".p-products__main-image img");
+  const thumbnailButtons = document.querySelectorAll(
+    ".p-products__main-image-item",
+  );
+
+  if (!mainImage || !thumbnailButtons.length) return;
+
+  thumbnailButtons.forEach((button) => {
+    button.addEventListener("click", () => {
+      const thumbnailImg = button.querySelector("img");
+      if (!thumbnailImg) return;
+
+      mainImage.src = thumbnailImg.src;
+      mainImage.alt = thumbnailImg.alt || "";
+    });
+  });
 });
