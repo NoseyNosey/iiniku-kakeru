@@ -4043,6 +4043,10 @@ button.swiper-pagination-bullet {
   text-align: center;
 }
 
+.u-underline {
+  text-decoration: underline;
+}
+
 @media (max-width: 768px) {
   .u-sp-text-center {
     text-align: center;
