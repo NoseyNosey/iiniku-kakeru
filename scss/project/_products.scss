@@ -121,7 +121,7 @@
     @include sp-only {
     }
     .l-products-list {
-      @include margin-bottom-vw(60, 60);
+      @include margin-bottom-vw(40, 30);
       @include sp-only {
       }
     }

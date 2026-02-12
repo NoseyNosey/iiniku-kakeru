@@ -5308,11 +5308,11 @@ button.swiper-pagination-bullet {
   }
 }
 .p-products__ranking .l-products-list {
-  margin-bottom: 3.9682539683vw;
+  margin-bottom: 2.6455026455vw;
 }
 @media (max-width: 768px) {
   .p-products__ranking .l-products-list {
-    margin-bottom: 16vw;
+    margin-bottom: 8vw;
   }
 }
 .p-news__date {
