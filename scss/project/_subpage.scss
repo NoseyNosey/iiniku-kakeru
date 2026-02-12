@@ -212,5 +212,8 @@
       @include padding-left-vw(0, 20);
       @include padding-right-vw(0, 20);
     }
+    + .l-products__block {
+        @include margin-top-vw(60,40);
+    }
   }
 }
