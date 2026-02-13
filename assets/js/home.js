@@ -179,41 +179,48 @@ document.addEventListener("DOMContentLoaded", () => {
 
   document.querySelectorAll(".fade").forEach((el) => fadeObserver.observe(el));
 
-  /* =========================
-     Floating Button
-  ========================= */
+
+
+
+
+
   const floatingButton = document.querySelector(".floating-button");
-  const mv = document.querySelector(".p-home-mv");
-  const ranking = document.querySelector(".p-home-ranking");
-  const footer = document.querySelector("footer");
+const mv = document.querySelector(".p-home-mv");
+const footer = document.querySelector("footer");
 
-  if (floatingButton) {
-    const addObserver = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            floatingButton.classList.add("is-active");
-          }
-        });
-      },
-      { threshold: 0.1 },
-    );
+if (floatingButton) {
+  let isMvVisible = false;
+  let isFooterVisible = false;
 
-    const removeObserver = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            floatingButton.classList.remove("is-active");
-          }
-        });
-      },
-      { threshold: 0.1 },
-    );
+  const updateVisibility = () => {
+    if (isMvVisible || isFooterVisible) {
+      floatingButton.classList.remove("is-active");
+    } else {
+      floatingButton.classList.add("is-active");
+    }
+  };
 
-    if (ranking) addObserver.observe(ranking);
-    if (mv) removeObserver.observe(mv);
-    if (footer) removeObserver.observe(footer);
-  }
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.target === mv) {
+          isMvVisible = entry.isIntersecting;
+        }
+        if (entry.target === footer) {
+          isFooterVisible = entry.isIntersecting;
+        }
+      });
+
+      updateVisibility();
+    },
+    { threshold: 0.1 }
+  );
+
+  if (mv) observer.observe(mv);
+  if (footer) observer.observe(footer);
+}
+
+
 });
 
 

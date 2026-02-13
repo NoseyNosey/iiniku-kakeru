@@ -115,7 +115,7 @@
 
   &.--cart :is(a, button) {
     @include height-vw(76, 64);
-        @include font-vw(18, 18);
+    @include font-vw(18, 18);
     &::after {
       content: "";
       position: absolute;
@@ -133,8 +133,8 @@
       &::after {
         @include pc-only {
           transform: translateX(0);
-           background: url(../../assets/images/common/icon-cart-white.svg) no-repeat
-        center / 100%;
+          background: url(../../assets/images/common/icon-cart-white.svg)
+            no-repeat center / 100%;
         }
       }
     }
@@ -155,12 +155,13 @@
 
   &.is-active {
     opacity: 1;
+    pointer-events: all;
   }
 
   @include bottom-vw(50, 50);
 
   a {
-    display: flex;
+    display: block;
     align-items: center;
     justify-content: center;
     color: $color-white;
@@ -171,8 +172,6 @@
     overflow: hidden;
     letter-spacing: -0.15em;
     transition: $transition;
-    writing-mode: vertical-rl; // 縦書き設定
-    text-orientation: mixed;
     border-top-right-radius: 0 !important;
     border-bottom-right-radius: 0 !important;
 
@@ -180,7 +179,14 @@
     @include font-vw(16, 12);
     @include width-vw(60, 45);
     @include height-vw(200, 150);
+    @include padding-top-vw(30, 20);
     @include padding-bottom-vw(25, 25);
+
+    span {
+      display: block;
+      text-align: center;
+      line-height: 1.3;
+    }
 
     @include sp-only {
     }

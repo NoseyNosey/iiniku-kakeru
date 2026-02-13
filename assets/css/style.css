@@ -3392,6 +3392,7 @@ button.swiper-pagination-bullet {
 }
 .floating-button.is-active {
   opacity: 1;
+  pointer-events: all;
 }
 .floating-button {
   bottom: 3.3068783069vw;
@@ -3402,7 +3403,7 @@ button.swiper-pagination-bullet {
   }
 }
 .floating-button a {
-  display: flex;
+  display: block;
   align-items: center;
   justify-content: center;
   color: #fff;
@@ -3413,8 +3414,6 @@ button.swiper-pagination-bullet {
   overflow: hidden;
   letter-spacing: -0.15em;
   transition: 0.25s cubic-bezier(0.39, 0.575, 0.565, 1);
-  writing-mode: vertical-rl;
-  text-orientation: mixed;
   border-top-right-radius: 0 !important;
   border-bottom-right-radius: 0 !important;
 }
@@ -3451,12 +3450,25 @@ button.swiper-pagination-bullet {
   }
 }
 .floating-button a {
+  padding-top: 1.9841269841vw;
+}
+@media (max-width: 768px) {
+  .floating-button a {
+    padding-top: 5.3333333333vw;
+  }
+}
+.floating-button a {
   padding-bottom: 1.6534391534vw;
 }
 @media (max-width: 768px) {
   .floating-button a {
     padding-bottom: 6.6666666667vw;
   }
+}
+.floating-button a span {
+  display: block;
+  text-align: center;
+  line-height: 1.3;
 }
 .floating-button a::before {
   content: "";
