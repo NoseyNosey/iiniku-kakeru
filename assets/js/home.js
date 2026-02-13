@@ -1,42 +1,56 @@
 document.addEventListener("DOMContentLoaded", () => {
-  /* =========================
-     Header Menu
-  ========================= */
+  initHeaderMenu();
+  initHeaderScroll();
+  initFaqAccordion();
+  initSwiper();
+  initTextAnimation();
+  initFadeIn();
+  initFloatingButton();
+  initProductImageSwitcher();
+});
+
+/* =========================
+   Header Menu
+========================= */
+function initHeaderMenu() {
   const menuButton = document.querySelector(".l-header__menu");
   const header = document.querySelector(".l-header");
   const overlay = document.querySelector(".overlay");
   const body = document.body;
 
-  if (menuButton && header && overlay) {
-    menuButton.addEventListener("click", () => {
-      const isActive = header.classList.contains("is-active");
+  if (!menuButton || !header || !overlay) return;
 
-      header.classList.toggle("is-active", !isActive);
-      overlay.classList.toggle("is-active", !isActive);
+  menuButton.addEventListener("click", () => {
+    const isActive = header.classList.contains("is-active");
 
-      // メニュー操作時は常に scroll 状態
-      header.classList.add("is-scroll");
+    header.classList.toggle("is-active", !isActive);
+    overlay.classList.toggle("is-active", !isActive);
+    header.classList.add("is-scroll");
 
-      body.style.overflow = isActive ? "" : "hidden";
-    });
-  }
+    body.style.overflow = isActive ? "" : "hidden";
+  });
+}
 
-  /* =========================
-     Header Scroll
-  ========================= */
-  if (header) {
-    const onScroll = () => {
-      if (header.classList.contains("is-active")) return;
-      header.classList.toggle("is-scroll", window.scrollY > 0);
-    };
+/* =========================
+   Header Scroll
+========================= */
+function initHeaderScroll() {
+  const header = document.querySelector(".l-header");
+  if (!header) return;
 
-    onScroll();
-    window.addEventListener("scroll", onScroll);
-  }
+  const onScroll = () => {
+    if (header.classList.contains("is-active")) return;
+    header.classList.toggle("is-scroll", window.scrollY > 0);
+  };
 
-  /* =========================
-     FAQ Accordion
-  ========================= */
+  onScroll();
+  window.addEventListener("scroll", onScroll);
+}
+
+/* =========================
+   FAQ Accordion
+========================= */
+function initFaqAccordion() {
   document.querySelectorAll(".l-faq__item").forEach((item) => {
     const q = item.querySelector(".l-faq__q");
     const a = item.querySelector(".l-faq__a");
@@ -57,17 +71,23 @@ document.addEventListener("DOMContentLoaded", () => {
         a.style.height = `${a.scrollHeight}px`;
         a.style.opacity = "1";
 
-        a.addEventListener("transitionend", function handler() {
-          a.style.height = "auto";
-          a.removeEventListener("transitionend", handler);
-        });
+        a.addEventListener(
+          "transitionend",
+          function handler() {
+            a.style.height = "auto";
+            a.removeEventListener("transitionend", handler);
+          },
+          { once: true },
+        );
       }
     });
   });
+}
 
-  /* =========================
-     Swiper Slider
-  ========================= */
+/* =========================
+   Swiper Slider
+========================= */
+function initSwiper() {
   document.querySelectorAll(".js-slider-block").forEach((block) => {
     const swiperEl = block.querySelector(".js-swiper");
     const cursol = block.querySelector(".l-button-and-cursol__cursol");
@@ -113,15 +133,17 @@ document.addEventListener("DOMContentLoaded", () => {
     prevBtn.addEventListener("click", () => swiper.slidePrev());
     nextBtn.addEventListener("click", () => swiper.slideNext());
   });
+}
 
-  /* =========================
-     Text Animation
-  ========================= */
+/* =========================
+   Text Animation
+========================= */
+function initTextAnimation() {
   const TEXT_VISIBLE_CLASS = "-visible";
   const TEXT_DELAY_STEP = 0.06;
   const isSP = window.matchMedia("(max-width: 768px)").matches;
 
-  const textObserver = new IntersectionObserver(
+  const observer = new IntersectionObserver(
     (entries, obs) => {
       entries.forEach((entry) => {
         if (!entry.isIntersecting) return;
@@ -135,11 +157,12 @@ document.addEventListener("DOMContentLoaded", () => {
   );
 
   document.querySelectorAll(".js-text-anim").forEach((container) => {
-    const targets = container.querySelectorAll(
-      ".en, .jp, .sub, .en-insta-01, .en-insta-02",
-    );
+    const targets =
+      container.querySelectorAll(
+        ".en, .jp, .sub, .en-insta-01, .en-insta-02",
+      ) || [container];
 
-    (targets.length ? targets : [container]).forEach((el) => {
+    targets.forEach((el) => {
       const nodes = [...el.childNodes];
       el.innerHTML = "";
       let index = 0;
@@ -160,13 +183,15 @@ document.addEventListener("DOMContentLoaded", () => {
       });
     });
 
-    textObserver.observe(container);
+    observer.observe(container);
   });
+}
 
-  /* =========================
-     Fade In
-  ========================= */
-  const fadeObserver = new IntersectionObserver(
+/* =========================
+   Fade In
+========================= */
+function initFadeIn() {
+  const observer = new IntersectionObserver(
     (entries, obs) => {
       entries.forEach((entry) => {
         if (!entry.isIntersecting) return;
@@ -177,68 +202,61 @@ document.addEventListener("DOMContentLoaded", () => {
     { threshold: 0.2 },
   );
 
-  document.querySelectorAll(".fade").forEach((el) => fadeObserver.observe(el));
+  document.querySelectorAll(".fade").forEach((el) => observer.observe(el));
+}
 
-
-
-
-
-
+/* =========================
+   Floating Button
+========================= */
+function initFloatingButton() {
   const floatingButton = document.querySelector(".floating-button");
-const mv = document.querySelector(".p-home-mv");
-const footer = document.querySelector("footer");
+  const mv = document.querySelector(".p-home-mv");
+  const footer = document.querySelector("footer");
+  if (!floatingButton) return;
 
-if (floatingButton) {
   let isMvVisible = false;
   let isFooterVisible = false;
 
-  const updateVisibility = () => {
-    if (isMvVisible || isFooterVisible) {
-      floatingButton.classList.remove("is-active");
-    } else {
-      floatingButton.classList.add("is-active");
-    }
+  const update = () => {
+    floatingButton.classList.toggle(
+      "is-active",
+      !isMvVisible && !isFooterVisible,
+    );
   };
 
   const observer = new IntersectionObserver(
     (entries) => {
       entries.forEach((entry) => {
-        if (entry.target === mv) {
-          isMvVisible = entry.isIntersecting;
-        }
-        if (entry.target === footer) {
-          isFooterVisible = entry.isIntersecting;
-        }
+        if (entry.target === mv) isMvVisible = entry.isIntersecting;
+        if (entry.target === footer) isFooterVisible = entry.isIntersecting;
       });
-
-      updateVisibility();
+      update();
     },
-    { threshold: 0.1 }
+    { threshold: 0.1 },
   );
 
   if (mv) observer.observe(mv);
   if (footer) observer.observe(footer);
 }
 
-
-});
-
-
-document.addEventListener("DOMContentLoaded", () => {
+/* =========================
+   Product Image Switcher
+========================= */
+function initProductImageSwitcher() {
   const mainImage = document.querySelector(".p-products__main-image img");
-  const thumbnailButtons = document.querySelectorAll(
+  const thumbnails = document.querySelectorAll(
     ".p-products__main-image-item",
   );
 
-  if (!mainImage || !thumbnailButtons.length) return;
+  if (!mainImage || !thumbnails.length) return;
 
-  thumbnailButtons.forEach((button) => {
+  thumbnails.forEach((button) => {
     button.addEventListener("click", () => {
-      const thumbnailImg = button.querySelector("img");
-      if (!thumbnailImg) return;
+      const img = button.querySelector("img");
+      if (!img) return;
 
-      mainImage.src = thumbnailImg.src;
-      mainImage.alt = thumbnailImg.alt || "";
+      mainImage.src = img.src;
+      mainImage.alt = img.alt || "";
     });
   });
-});
+}
